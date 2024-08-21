@@ -7,6 +7,7 @@ module PMDlab
     import LinearAlgebra: diagm, diag
 
 
-    include("./datamodel/master.jl")
+    include("datamodel.jl")
+    include("benchmarking.jl")
 
 end # module PMDlab
