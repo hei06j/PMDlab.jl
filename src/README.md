@@ -1,4 +1,4 @@
-# Three-wire and Four-wire variants of ENWL feeders
+#  Four-wire variants of ENWL feeders
 
 This dataset contains three-wire and four-wire variants of the ENWL low-voltage networks.
 
@@ -20,31 +20,10 @@ This dataset however, contains three-wire and four-wire variants of the original
 
 First, we compiled a library of detailed line models. These line models were provided by [1]. Next, for each line in the datatset, we assign the four-wire line model which matches the original one most closely in terms of positive sequence impedance [2]. Further numerical experiments were performed in [3].
 
-
-## Three-wire variants
-
-We next transform the four-wire line models to the following three-wire models and make necessary changes to the feeder models.
-
-### Kron-reduced line models
-
-For more details on this line model, please refer to [2,3].
-
-### Phase-neutral line models
-
-For more details on this line model, please refer to [3].
-
-### Modified phase-neutral line models
-
-For more details on this line model, please refer to [3].
-
-
 ## Usage
 
 This dataset contains the following folders:
 - `four-wire`: These are the four-wire extensions of each feeder in the dataset with four-wire line models.
-- `three-wire-Kron-reduced`: These are the three-wire extensions of each feeder in the dataset with kron-reduced line models.
-- `three-wire-phase-to-neutral`: These are the three-wire extensions of each feeder in the dataset with phase-neutral line models.
-- `three-wire-modified-phase-to-neutral`: These are the three-wire extensions of each feeder in the dataset with modified phase-neutral line models.
 
 
 Note that the loads default to 1 kW in the output file, and the dss loadshape files are not included. You can refer to the original dataset [website](https://www.enwl.co.uk/future-energy/innovation/smaller-projects/low-carbon-networks-fund/low-voltage-network-solutions/) to obtain load profiles for various scenarios.
