@@ -10,7 +10,7 @@ pkg_dir = dirname(pathof(PMDlab))
 cd( joinpath(pkg_dir, "..", "data") )
 
 ENWL_ORIGINAL_DIR = "enwl_original"
-ENWL_4W_EMBD_DIR = "enwl_4w"
+ENWL_4W_EMBD_DIR = "four-wire"
 
 LINE_MODELS_DIR = "urquhart_line_models"
 LOAD_PROFILE_DIR = "Load_profiles"
