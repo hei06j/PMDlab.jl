@@ -11,9 +11,9 @@ const PMD = PowerModelsDistribution
 
 
 ## read and parse network data
-file = "data/enwl_4w/network_1/Feeder_2/Master.dss"
+file = "data/four-wire/network_1/Feeder_2/Master.dss"
 
-eng4w = parse_file(file, transformations=[transform_loops!,remove_all_bounds!])
+eng4w = parse_file(file, transformations=[transform_loops!])
 eng4w["settings"]["sbase_default"] = 1
 math4w = transform_data_model(eng4w, kron_reduce=false, phase_project=false)
 
