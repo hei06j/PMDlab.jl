@@ -45,14 +45,14 @@ for (d, load) in math4w["load"]
     end
 end
 
-
-### run optimal power flow
 add_start_vrvi!(math4w)
-result4w = solve_mc_opf(math4w, IVRENPowerModel, optimizer)
 
+## run optimal power flow  IV rectangular
+result4w_ivr = solve_mc_opf(math4w, IVRENPowerModel, optimizer)
 
-for (i, bus) in result4w["solution"]["bus"]
+for (i, bus) in result4w_ivr["solution"]["bus"]
     if length(bus["vr"]) >= 4
         bus["vmn"] = abs.((bus["vr"][1:3] .+ im.*bus["vi"][1:3]) .- (bus["vr"][4] + im.*bus["vi"][4]))
     end
 end
+

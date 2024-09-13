@@ -45,7 +45,13 @@ for (d, load) in math3w["load"]
     end
 end
 
+## run optimal power flow AC polar
+result3w_acp = solve_mc_opf(math3w, ACPUPowerModel, optimizer)
 
-### run optimal power flow
+## run optimal power flow AC rectangular
+result3w_acr = solve_mc_opf(math3w, ACRUPowerModel, optimizer)
+
+
+## run optimal power flow IV rectangular
 add_start_vrvi!(math3w)
-result3w = solve_mc_opf(math3w, IVRUPowerModel, optimizer)
+result3w_ivr = solve_mc_opf(math3w, IVRUPowerModel, optimizer)
