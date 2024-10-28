@@ -25,7 +25,6 @@ end
 shunt_counter = length(eng4w["shunt"])
 for (d, load) in enumerate(eng4w["load"])
     if mod(d, 2) == 1
-        @show d, load
         shunt_counter += 1
         load_bus = last(load)["bus"]
         eng4w["shunt"]["$shunt_counter"] = Dict{String,Any}()
