@@ -14,8 +14,41 @@ const PMD = PowerModelsDistribution
 file = "data/four-wire/network_1/Feeder_2/Master.dss"
 
 eng4w = parse_file(file, transformations=[transform_loops!])
-eng4w["settings"]["sbase_default"] = 1
+eng4w["settings"]["sbase_default"] = 1        # Change power base here
+eng4w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source ingternal impedance
+eng4w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source ingternal impedance
+
+### adding grounding to every second load, in the engineering model
+if !haskey(eng4w, "shunt")
+    eng4w["shunt"] = Dict{String,Any}()
+end
+shunt_counter = length(eng4w["shunt"])
+for (d, load) in enumerate(eng4w["load"])
+    if mod(d, 2) == 1
+        @show d, load
+        shunt_counter += 1
+        load_bus = last(load)["bus"]
+        eng4w["shunt"]["$shunt_counter"] = Dict{String,Any}()
+        eng4w["shunt"]["$shunt_counter"]["source_id"] = "reactor.grounding_load_$d"
+        eng4w["shunt"]["$shunt_counter"]["status"] = ENABLED
+        eng4w["shunt"]["$shunt_counter"]["connections"] = [4, 5]
+        eng4w["shunt"]["$shunt_counter"]["bus"] = load_bus
+        eng4w["shunt"]["$shunt_counter"]["gs"] = [0.1  -0.1 ; -0.1   0.1]
+        eng4w["shunt"]["$shunt_counter"]["bs"] = [0.0 0.0 ; 0.0 0.0]
+        eng4w["bus"]["$load_bus"]["terminals"] = [1,2,3,4,5]
+        eng4w["bus"]["$load_bus"]["grounded"] = [5]
+        eng4w["bus"]["$load_bus"]["rg"] = [0.0]
+        eng4w["bus"]["$load_bus"]["xg"] = [0.0]
+    end
+end
+
+
 math4w = transform_data_model(eng4w, kron_reduce=false, phase_project=false)
+
+### changing ref_bus voltage bounds
+ref_bus = [i for (i,bus) in math3w["bus"] if occursin("source", bus["name"])]
+math3w["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
+math3w["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
 
 ### chaning some of the input data
 for (i,bus) in math4w["bus"]
@@ -30,18 +63,23 @@ for (g,gen) in math4w["gen"]
     gen["cost"] = 1000 .* gen["cost"]
 end
 
+gen_counter = length(math4w["gen"])
+shunt_counter = length(math4w["shunt"])
 for (d, load) in math4w["load"]
-    gen_counter = 2
     if mod(load["index"], 4) == 1
+        gen_counter = gen_counter + 1
         math4w["gen"]["$gen_counter"] = deepcopy(math4w["gen"]["1"])
-        math4w["gen"]["$gen_counter"]["name"] = "$gen_counter"
+        math4w["gen"]["$gen_counter"]["name"] = "gen_$gen_counter"
         math4w["gen"]["$gen_counter"]["index"] = gen_counter
         math4w["gen"]["$gen_counter"]["cost"] = 0.5*math4w["gen"]["1"]["cost"]
         math4w["gen"]["$gen_counter"]["gen_bus"] = load["load_bus"]
         math4w["gen"]["$gen_counter"]["pmax"] = 4*ones(3)
         math4w["gen"]["$gen_counter"]["pmin"] = 0.0*ones(3)
         math4w["gen"]["$gen_counter"]["connections"] = [1;2;3;4]
-        gen_counter = gen_counter + 1
+    end
+    ### change every 10th load to constant impedance
+    if mod(load["index"], 10) == 1
+        load["model"] = IMPEDANCE
     end
 end
 
