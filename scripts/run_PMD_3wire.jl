@@ -15,8 +15,8 @@ file = "data/three-wire/network_1/Feeder_2/Master.dss"
 
 eng3w = parse_file(file, transformations=[transform_loops!])
 eng3w["settings"]["sbase_default"] = 1        # Change power base here
-eng3w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source ingternal impedance
-eng3w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source ingternal impedance
+eng3w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
+eng3w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=false)
 
@@ -38,7 +38,7 @@ for (g,gen) in math3w["gen"]
     gen["cost"] = 1000 .* gen["cost"]
 end
 
-gen_counter = length(math4w["gen"])
+gen_counter = length(math3w["gen"])
 for (d, load) in math3w["load"]
     if mod(load["index"], 4) == 1
         gen_counter = gen_counter + 1
