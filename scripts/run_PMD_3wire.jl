@@ -7,15 +7,22 @@ using LinearAlgebra
 optimizer = Ipopt.Optimizer
 
 const PMD = PowerModelsDistribution
+
+
+# function test() 
+
 PMD.silence!()
+
 
 ## read and parse network data
 file = "data/three-wire/network_1/Feeder_2/Master.dss"
 
 eng3w = parse_file(file, transformations=[transform_loops!])
+
 eng3w["settings"]["sbase_default"] = 1        # Change power base here
 eng3w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
 eng3w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
+reduce_line_series!(eng3w)
 
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=false)
 
@@ -66,3 +73,8 @@ result3w_acr = solve_mc_opf(math3w, ACRUPowerModel, optimizer)
 ## run optimal power flow IV rectangular
 add_start_vrvi!(math3w)
 result3w_ivr = solve_mc_opf(math3w, IVRUPowerModel, optimizer)
+
+# return result3w_acp, result3w_acr, result3w_ivr
+
+# end
+# test()
