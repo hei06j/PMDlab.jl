@@ -47,9 +47,9 @@ end
 math4w = transform_data_model(eng4w, kron_reduce=false, phase_project=false)
 
 ### changing ref_bus voltage bounds
-ref_bus = [i for (i,bus) in math3w["bus"] if occursin("source", bus["name"])]
-math3w["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
-math3w["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
+ref_bus = [i for (i,bus) in math4w["bus"] if occursin("source", bus["name"])]
+math4w["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
+math4w["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
 
 ### chaning some of the input data
 for (i,bus) in math4w["bus"]

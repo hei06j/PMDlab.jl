@@ -1,5 +1,4 @@
 using Pkg
-Pkg.activate("./")
 using PMDlab
 using PowerModelsDistribution
 using Ipopt
@@ -9,7 +8,11 @@ optimizer = Ipopt.Optimizer
 
 const PMD = PowerModelsDistribution
 
+
 # function test() 
+
+PMD.silence!()
+
 
 ## read and parse network data
 file = "data/three-wire/network_1/Feeder_2/Master.dss"
@@ -44,7 +47,7 @@ end
 gen_counter = length(math3w["gen"])
 for (d, load) in math3w["load"]
     if mod(load["index"], 4) == 1
-        gen_counter = gen_counter + 1
+        global gen_counter = gen_counter + 1
         math3w["gen"]["$gen_counter"] = deepcopy(math3w["gen"]["1"])
         math3w["gen"]["$gen_counter"]["name"] = "$gen_counter"
         math3w["gen"]["$gen_counter"]["index"] = gen_counter
