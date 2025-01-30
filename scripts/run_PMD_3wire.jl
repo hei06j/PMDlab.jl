@@ -11,7 +11,6 @@ optimizer = JuMP.optimizer_with_attributes(Ipopt.Optimizer, "max_iter"=>100)
 
 const PMD = PowerModelsDistribution
 
-
 PMD.silence!()
 
 ## read and parse network data
@@ -22,7 +21,7 @@ file = "data/three-wire-with-transformer/network_1/Feeder_2/Master.dss"     # th
 # file = "data/three-wire/network_23/Feeder_3/Master.dss"                      # three-wire without transformer
 
 eng3w = parse_file(file, transformations=[transform_loops!])
-PMDlab.augment_eng_3wire!(eng3w; line_current_rating=true, sbase=1)
+PMDlab.augment_eng_3wire!(eng3w; line_current_rating=true, reduce_lines=true, sbase=1)
 
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
 PMDlab.augment_math_3wire!(math3w; relax_vsource_vm=true, Vsequence_bounds=true, cost_multiplier=1000)  # changing some of the input data

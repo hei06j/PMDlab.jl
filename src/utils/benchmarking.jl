@@ -1,7 +1,11 @@
-function augment_eng_3wire!(eng; line_current_rating=true, sbase=1)
+function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sbase=1)
 
     if line_current_rating
         add_linecode_normaps!(eng)           # add branch current limit
+    end
+
+    if reduce_lines
+        PMD.reduce_line_series!(eng)
     end
 
     eng["settings"]["sbase_default"] = sbase    # change power base here
