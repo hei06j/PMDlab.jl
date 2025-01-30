@@ -1,5 +1,4 @@
 using Pkg
-Pkg.activate("./")
 using PMDlab
 using PowerModelsDistribution
 using Ipopt
@@ -12,6 +11,8 @@ optimizer = JuMP.optimizer_with_attributes(Ipopt.Optimizer, "max_iter"=>100)
 
 const PMD = PowerModelsDistribution
 
+
+PMD.silence!()
 
 ## read and parse network data
 file = "data/three-wire-with-transformer/network_1/Feeder_2/Master.dss"     # three-wire with transformer
@@ -44,3 +45,4 @@ result3w_acr = PMD.solve_mc_model(math3w, ACRUPowerModel, optimizer, PMDlab.buil
 add_start_voltage!(math3w, coordinates=:rectangular, explicit_neutral=false)
 result3w_ivr = PMD.solve_mc_model(math3w, IVRUPowerModel, optimizer, PMDlab.build_mc_opf)
 # result3w_ivr = solve_mc_opf(math3w, IVRUPowerModel, optimizer)  # alternative, if the opf problem hadn't changed
+
