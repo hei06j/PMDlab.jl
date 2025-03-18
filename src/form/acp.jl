@@ -33,7 +33,7 @@ function constraint_mc_bus_voltage_magnitude_negative_sequence(pm::PMD.AbstractU
     # square of magnitude of U-, |U-|^2
     vmnegsqr = JuMP.@expression(pm.model, vreneg^2+vimneg^2)
     # finally, apply constraint
-    JuMP.@NLconstraint(pm.model, vmnegsqr <= vmnegmax^2)
+    JuMP.@constraint(pm.model, vmnegsqr <= vmnegmax^2)
 
     PMD.sol(pm, nw, :bus, bus_id)[:vmnegsqr] = vmnegsqr
 end
@@ -107,7 +107,7 @@ function constraint_mc_bus_voltage_magnitude_zero_sequence(pm::PMD.AbstractUnbal
     ### square of magnitude of U+, |U+|^2
     vmzerosqr = JuMP.@expression(pm.model, vrezero^2+vimzero^2)
     ### finally, apply constraint
-    JuMP.@NLconstraint(pm.model, vmzerosqr <= vmzeromax^2)
+    JuMP.@constraint(pm.model, vmzerosqr <= vmzeromax^2)
 
     PMD.sol(pm, nw, :bus, bus_id)[:vmzerosqr] = vmzerosqr
 end
@@ -153,7 +153,7 @@ function constraint_mc_bus_voltage_magnitude_vuf(pm::PMD.AbstractUnbalancedACPMo
     )
     # square of magnitude of U+, |U+|^2
     vmpossqr = JuMP.@expression(pm.model, vrepos^2+vimpos^2)
-    
+
     # real and imaginary components of U-
     vreneg = JuMP.NonlinearExpr[]
     vimneg = JuMP.NonlinearExpr[]
@@ -170,7 +170,7 @@ function constraint_mc_bus_voltage_magnitude_vuf(pm::PMD.AbstractUnbalancedACPMo
     vuf = JuMP.NonlinearExpr[]
     vuf = JuMP.@expression(pm.model, vreneg / vimneg)
     # finally, apply constraint
-    JuMP.@NLconstraint(pm.model, vmnegsqr <= vufmax^2*vmpossqr)
+    JuMP.@constraint(pm.model, vmnegsqr <= vufmax^2*vmpossqr)
     # DEBUGGING: save references for post check
     #PMD.var(pm, PMD.nw_id_default, :vmpossqr)[bus_id] = vmpossqr
     #PMD.var(pm, PMD.nw_id_default, :vmnegsqr)[bus_id] = vmnegsqr
