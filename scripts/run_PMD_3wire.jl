@@ -1,4 +1,5 @@
 using Pkg
+Pkg.activate("./")
 using PMDlab
 using PowerModelsDistribution
 using Ipopt
@@ -14,11 +15,11 @@ const PMD = PowerModelsDistribution
 PMD.silence!()
 
 ## read and parse network data
-file = "data/three-wire-with-transformer/network_1/Feeder_2/Master.dss"     # three-wire with transformer
+# file = "data/three-wire-with-transformer/network_1/Feeder_2/Master.dss"     # three-wire with transformer
 # file = "data/three-wire-with-transformer/network_23/Feeder_3/Master.dss"     # three-wire with transformer
 
 # file = "data/three-wire/network_1/Feeder_2/Master.dss"                      # three-wire without transformer
-# file = "data/three-wire/network_23/Feeder_3/Master.dss"                      # three-wire without transformer
+file = "data/three-wire/network_23/Feeder_3/Master.dss"                      # three-wire without transformer  SMALLEST network
 
 eng3w = parse_file(file, transformations=[transform_loops!])
 PMDlab.augment_eng_3wire!(eng3w; line_current_rating=true, reduce_lines=true, sbase=1)
