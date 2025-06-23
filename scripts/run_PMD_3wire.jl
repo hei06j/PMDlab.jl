@@ -32,6 +32,8 @@ PMDlab.augment_math_3wire!(math3w; relax_vsource_vm=true, Vsequence_bounds=true,
 result3w_acp = PMD.solve_mc_model(math3w, ACPUPowerModel, optimizer, PMDlab.build_mc_opf)
 # result3w_acp = solve_mc_opf(math3w, ACPUPowerModel, optimizer)  # alternative, if the opf problem hadn't changed
 
+using Plots
+plot([bus["vm"] for (i, bus) in result3w_acp["solution"]["bus"]], seriestype=:scatter)
 
 ## run optimal power flow AC rectangular
 # add_start_vrvi!(math3w; explicit_neutral=false)  # This function does not work for explicit_neutral=false

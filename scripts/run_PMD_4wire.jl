@@ -20,7 +20,7 @@ PMDlab.add_linecode_normaps!(eng4w)           # add branch current limit
 eng4w["settings"]["sbase_default"] = 1        # change power base here
 eng4w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
 eng4w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
-reduce_line_series!(eng4w)
+reduce_line_series!(eng4w, remove_original_lines=true)
 
 ### adding grounding to every second load, in the engineering model
 if !haskey(eng4w, "shunt")

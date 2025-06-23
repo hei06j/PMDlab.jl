@@ -273,7 +273,7 @@ vuf = |U-|/|U+|
 |U-| <= vufmax*|U+|
 |U-|^2 <= vufmax^2*|U+|^2
 """
-function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACRModel, nw::Int, bus_id::Int, vmposmax::Real)
+function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACRModel, nw::Int, bus_id::Int, vmposmax::Real; vmposmin::Real=0.0)
     if !haskey(PMD.var(pm, PMD.nw_id_default), :vmpossqr)
         PMD.var(pm, PMD.nw_id_default)[:vmpossqr] = Dict{Int, Any}()
         # PMD.var(pm, PMD.nw_id_default)[:vmnegsqr] = Dict{Int, Any}()
@@ -297,6 +297,7 @@ function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractU
     vmpossqr = JuMP.@expression(pm.model, vrepos^2+vimpos^2)
     # finally, apply constraint
     JuMP.@constraint(pm.model, vmpossqr <= vmposmax^2)
+    !iszero(vmposmin) ? JuMP.@constraint(pm.model, vmpossqr >= vmposmin^2) : nothing
 
     PMD.sol(pm, nw, :bus, bus_id)[:vmpossqr] = vmpossqr
 end

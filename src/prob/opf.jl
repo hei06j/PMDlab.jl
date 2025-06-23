@@ -133,7 +133,7 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedIVRModel)
 
         PMD.constraint_mc_bus_voltage_drop(pm, i)
 
-        PMD.constraint_mc_voltage_angle_difference(pm, i)
+        # PMD.constraint_mc_voltage_angle_difference(pm, i)
 
         PMD.constraint_mc_thermal_limit_from(pm, i)
         PMD.constraint_mc_thermal_limit_to(pm, i)
@@ -177,7 +177,8 @@ function build_mc_opf(pm::PMD.AbstractExplicitNeutralIVRModel)
     for i in PMD.ids(pm, :bus)
 
         if i in PMD.ids(pm, :ref_buses)
-            PMD.constraint_mc_voltage_reference(pm, i)
+            # PMD.constraint_mc_voltage_reference(pm, i)
+            constraint_mc_voltage_reference(pm, i)
         end
 
         PMD.constraint_mc_voltage_absolute(pm, i)

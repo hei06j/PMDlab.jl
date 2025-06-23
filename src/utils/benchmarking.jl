@@ -5,7 +5,7 @@ function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sb
     end
 
     if reduce_lines
-        PMD.reduce_line_series!(eng)
+        PMD.reduce_line_series!(eng, remove_original_lines=true)
     end
 
     eng["settings"]["sbase_default"] = sbase    # change power base here
@@ -15,28 +15,71 @@ function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sb
 end
 
 
-function augment_math_3wire!(math; relax_vsource_vm=true, Vsequence_bounds=true, cost_multiplier=1000)
+function augment_math_3wire!(math; relax_vsource=true, reverse_va_rotation=false, Vsequence_bounds=true, cost_multiplier=1000)
     math["is_kron_reduced"] = true
-
+    
     fix_data_parsing_issues!(math)       # ensuring length-3 vector across 3-wire data model
 
     if Vsequence_bounds
         add_sequence_voltage_bounds!(math)   # add sequence voltage bounds
     end
 
-
-    ### changing ref_bus voltage bounds
-    if relax_vsource_vm
-        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
-        math["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
-        math["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
+    if reverse_va_rotation
+        va_vector = [0, 120, -120] .* pi/180
+    else
+        va_vector = [0, -120, 120] .* pi/180
     end
+
+    # relax_vsource = "all fixed", "va fixed", "one va fixed"
+    ### changing ref_bus voltage bounds
+    if relax_vsource == "3va fix"
+        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+        math["bus"]["$(ref_bus[1])"]["vmin"] = 0.9 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmax"] = 1.1 .* ones(3)
+        # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
+        math["bus"]["$(ref_bus[1])"]["va"] = va_vector
+        math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "3va fix"
+    elseif relax_vsource == "va fix va diff"
+        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+        math["bus"]["$(ref_bus[1])"]["vmin"] = 0.9 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmax"] = 1.1 .* ones(3)
+        # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
+        math["bus"]["$(ref_bus[1])"]["va"] = va_vector
+        math["bus"]["$(ref_bus[1])"]["vadelta"] = 30
+        math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "va fix va diff"
+    elseif relax_vsource == "va fix seq"
+        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+        math["bus"]["$(ref_bus[1])"]["vmin"] .= 0   # 0.9 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf # 1.1 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vm_seq_pos_min"] = 0.9
+        math["bus"]["$(ref_bus[1])"]["vm_seq_pos_max"] = 1.1
+        math["bus"]["$(ref_bus[1])"]["vm_seq_neg_max"] = 0.02
+        # math["bus"]["$(ref_bus[1])"]["vm_seq_zero_max"] = 0.02
+        # math["bus"]["$(ref_bus[1])"]["vm_vuf_max"] = 2# 0.02
+        # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
+        math["bus"]["$(ref_bus[1])"]["va"] = va_vector
+        math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "va fix seq"
+    else
+        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+        math["bus"]["$(ref_bus[1])"]["vmin"] .= 0
+        math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf
+        math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
+        math["bus"]["$(ref_bus[1])"]["va"] = va_vector
+        math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "3vm 3va fix"
+    end
+    # if relax_vsource_vm
+    #     ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+    #     math["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
+    #     math["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
+    # end
 
     for (i,bus) in math["bus"]
         if bus["bus_type"] != 3 && !startswith(bus["source_id"], "transformer")
-            bus["vm_pair_lb"] = [(1, 4, 0.9);(2, 4, 0.9);(3, 4, 0.9)]
-            bus["vm_pair_ub"] = [(1, 4, 1.1);(2, 4, 1.1);(3, 4, 1.1)]
+            # bus["vm_pair_lb"] = [(1, 4, 0.9);(2, 4, 0.9);(3, 4, 0.9)]
+            # bus["vm_pair_ub"] = [(1, 4, 1.1);(2, 4, 1.1);(3, 4, 1.1)]
             # bus["grounded"] .=  0
+            bus["vmin"] = 0.9 .* [1, 1, 1]
+            bus["vmax"] = 1.1 .* [1, 1, 1]
         end
     end
     
