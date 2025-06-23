@@ -63,9 +63,19 @@ for (d, load) in math3w["load"]
     end
 end
 
+function make_impedances_symmetric!(math)
+    for (l, branch) in math["branch"]
+        r = branch["br_r"]
+        x = branch["br_x"]
+        branch["br_r"] .= (r .+ r[[2, 3, 1],[2, 3, 1]] + r[[3, 1, 2],[3, 1,2]])./3
+        branch["br_x"] .= (x .+ x[[2, 3, 1],[2, 3, 1]] + x[[3, 1, 2],[3, 1,2]])./3
+    end
+end
+make_impedances_symmetric!(math3w)
 
 ## run optimal power flow AC polar
 result3w_acp = solve_mc_opf(math3w, ACPUPowerModel, optimizer)
+
 
 ## run optimal power flow AC rectangular
 result3w_acr = solve_mc_opf(math3w, ACRUPowerModel, optimizer)
