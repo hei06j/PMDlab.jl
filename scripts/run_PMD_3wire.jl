@@ -27,6 +27,15 @@ PMDlab.augment_eng_3wire!(eng3w; line_current_rating=true, reduce_lines=true, sb
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
 PMDlab.augment_math_3wire!(math3w; relax_vsource_vm=true, Vsequence_bounds=true, cost_multiplier=1000)  # changing some of the input data
 
+function make_impedances_symmetric!(math)
+    for (l, branch) in math["branch"]
+        r = branch["br_r"]
+        x = branch["br_x"]
+        branch["br_r"] .= (r .+ r[[2, 3, 1],[2, 3, 1]] + r[[3, 1, 2],[3, 1,2]])./3
+        branch["br_x"] .= (x .+ x[[2, 3, 1],[2, 3, 1]] + x[[3, 1, 2],[3, 1,2]])./3
+    end
+end
+make_impedances_symmetric!(math3w)
 
 ## run optimal power flow AC polar
 result3w_acp = PMD.solve_mc_model(math3w, ACPUPowerModel, optimizer, PMDlab.build_mc_opf)
@@ -34,6 +43,7 @@ result3w_acp = PMD.solve_mc_model(math3w, ACPUPowerModel, optimizer, PMDlab.buil
 
 using Plots
 plot([bus["vm"] for (i, bus) in result3w_acp["solution"]["bus"]], seriestype=:scatter)
+
 
 ## run optimal power flow AC rectangular
 # add_start_vrvi!(math3w; explicit_neutral=false)  # This function does not work for explicit_neutral=false
