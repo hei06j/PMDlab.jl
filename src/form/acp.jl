@@ -47,7 +47,7 @@ vuf = |U-|/|U+|
 |U-| <= vufmax*|U+|
 |U-|^2 <= vufmax^2*|U+|^2
 """
-function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACPModel, nw::Int, bus_id::Int, vmposmax::Real; vmposmin::Real=nothing)
+function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACPModel, nw::Int, bus_id::Int, vmposmax::Real, vmposmin::Real)
     if !haskey(PMD.var(pm, PMD.nw_id_default), :vmpossqr)
         PMD.var(pm, PMD.nw_id_default)[:vmpossqr] = Dict{Int, Any}()
     end
@@ -60,23 +60,28 @@ function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractU
     a2re = real(a^2)
     a2im = imag(a^2)
     ### real and imaginary components of U+
-    vrepos = JuMP.NonlinearExpr[]
-    vimpos = JuMP.NonlinearExpr[]
-    vmpossqr = JuMP.NonlinearExpr[]
-    vrepos = JuMP.@expression(pm.model,
-        (vm_a*cos(va_a) + are*vm_b*cos(va_b) - aim*vm_b*sin(va_b) + a2re*vm_c*cos(va_c) - a2im*vm_c*sin(va_c))/3
-    )
-    vimpos = JuMP.@expression(pm.model,
-        (vm_a*sin(va_a) + are*vm_b*sin(va_b) + aim*vm_b*cos(va_b) + a2re*vm_c*sin(va_c) + a2im*vm_c*cos(va_c))/3
-    )
+    # vrepos = JuMP.NonlinearExpr[]
+    # vimpos = JuMP.NonlinearExpr[]
+    # vmpossqr = JuMP.NonlinearExpr[]
+    # vrepos = JuMP.@expression(pm.model,
+    #     (vm_a*cos(va_a) + are*vm_b*cos(va_b) - aim*vm_b*sin(va_b) + a2re*vm_c*cos(va_c) - a2im*vm_c*sin(va_c))/3
+    # )
+    # vimpos = JuMP.@expression(pm.model,
+    #     (vm_a*sin(va_a) + are*vm_b*sin(va_b) + aim*vm_b*cos(va_b) + a2re*vm_c*sin(va_c) + a2im*vm_c*cos(va_c))/3
+    # )
 
     # square of magnitude of U+, |U+|^2
-    vmpossqr = JuMP.@expression(pm.model, vrepos^2+vimpos^2)
+    # vmpossqr = JuMP.@expression(pm.model, vrepos^2+vimpos^2)
     # finally, apply constraint
-    JuMP.@NLconstraint(pm.model, vmpossqr <= vmposmax^2)
-    !isnothing(vmposmin) ? JuMP.@constraint(pm.model, vmpossqr >= vmposmin^2) : nothing
+    # JuMP.@NLconstraint(pm.model, vrepos^2+vimpos^2 <= vmposmax^2)
+    # JuMP.@NLconstraint(pm.model, vrepos^2+vimpos^2 >= vmposmin^2)
 
-    PMD.sol(pm, nw, :bus, bus_id)[:vmpossqr] = vmpossqr
+    JuMP.@constraint(pm.model, ((vm_a*cos(va_a) + are*vm_b*cos(va_b) - aim*vm_b*sin(va_b) + a2re*vm_c*cos(va_c) - a2im*vm_c*sin(va_c))/3)^2+
+            ((vm_a*sin(va_a) + are*vm_b*sin(va_b) + aim*vm_b*cos(va_b) + a2re*vm_c*sin(va_c) + a2im*vm_c*cos(va_c))/3)^2 <= vmposmax^2)
+    JuMP.@constraint(pm.model, ((vm_a*cos(va_a) + are*vm_b*cos(va_b) - aim*vm_b*sin(va_b) + a2re*vm_c*cos(va_c) - a2im*vm_c*sin(va_c))/3)^2+
+            ((vm_a*sin(va_a) + are*vm_b*sin(va_b) + aim*vm_b*cos(va_b) + a2re*vm_c*sin(va_c) + a2im*vm_c*cos(va_c))/3)^2 >= vmposmin^2)
+
+    # PMD.sol(pm, nw, :bus, bus_id)[:vmpossqr] = vrepos^2+vimpos^2
 end
 
 

@@ -18,7 +18,7 @@ const PMD = PowerModelsDistribution
 
 PMD.silence!()
 
-## read and parse network data
+### read and parse network data
 # file = "data/three-wire-with-transformer/network_1/Feeder_2/Master.dss"     # three-wire with transformer
 # file = "data/three-wire-with-transformer/network_23/Feeder_3/Master.dss"     # three-wire with transformer
 
@@ -57,17 +57,34 @@ PMDlab.augment_eng_3wire!(eng3w; line_current_rating=false, reduce_lines=true, s
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
 
 # relax_vsource_vm = options : "3vm 3va fix", "3va fix", "va fix va diff",  "va fix seq"
+# PMDlab.augment_math_3wire!(math3w; relax_vsource="3vm 3va fix", reverse_va_rotation=false, Vsequence_bounds=false, cost_multiplier=1000)  # changing some of the input data
+# PMDlab.augment_math_3wire!(math3w; relax_vsource="3va fix", reverse_va_rotation=false, Vsequence_bounds=false, cost_multiplier=1000)  # changing some of the input data
+# PMDlab.augment_math_3wire!(math3w; relax_vsource="va fix seq", reverse_va_rotation=false, Vsequence_bounds=false, cost_multiplier=1000)  # changing some of the input data
 PMDlab.augment_math_3wire!(math3w; relax_vsource="va fix va diff", reverse_va_rotation=false, Vsequence_bounds=false, cost_multiplier=1000)  # changing some of the input data
 
 ## how to initialise
 add_start_voltage!(math3w, coordinates=:rectangular, explicit_neutral=false)
 
-pm = PMD.instantiate_mc_model(math3w, IVRUPowerModel, PMDlab.build_mc_opf)
+pm = PMD.instantiate_mc_model(math3w, IVRUPowerModel, PMDlab.build_mc_opf);
 result3w_ivr = PMD.solve_mc_model(math3w, IVRUPowerModel, optimizer, PMDlab.build_mc_opf)
+
+pm = PMD.instantiate_mc_model(math3w, ACRUPowerModel, PMDlab.build_mc_opf);
+result3w_ivr = PMD.solve_mc_model(math3w, ACRUPowerModel, optimizer, PMDlab.build_mc_opf)
+
+pm = PMD.instantiate_mc_model(math3w, ACPUPowerModel, PMDlab.build_mc_opf);
+result3w_ivr = PMD.solve_mc_model(math3w, ACPUPowerModel, optimizer, PMDlab.build_mc_opf)
 # check_active_bounds(result3w_ivr, math3w)
 
 
-# vm_bounds = [sqrt.(bus["vr"].^2 .+ bus["vi"].^2) for (i, bus) in result3w_ivr["solution"]["bus"]]
+vm = [bus["vm"] for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+va = [bus["va"].*180/pi for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+
+vm = [sqrt.(bus["vr"].^2 .+ bus["vi"].^2) for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+va = [angle.(bus["vr"] .+ im*bus["vi"]).*180/pi for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+vneqseq = [sqrt(bus["vmnegsqr"]) for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+vposseq = [sqrt(bus["vmpossqr"]) for (i, bus) in result3w_ivr["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
+
+pg = [gen["pg"] for (i,gen) in result3w_ivr["solution"]["gen"]]
 
 # output_file = "model.json"
 # open(output_file, "w") do f

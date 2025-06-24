@@ -31,6 +31,8 @@ function constraint_mc_bus_voltage_magnitude_negative_sequence(pm::PMD.AbstractU
     vmnegsqr = JuMP.@expression(pm.model, vreneg^2+vimneg^2)
     # finally, apply constraint
     JuMP.@constraint(pm.model, vmnegsqr <= vmnegmax^2)
+
+    PMD.sol(pm, nw, :bus, bus_id)[:vmnegsqr] = vmnegsqr
 end
 
 
@@ -42,7 +44,7 @@ vuf = |U-|/|U+|
 |U-| <= vufmax*|U+|
 |U-|^2 <= vufmax^2*|U+|^2
 """
-function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedIVRModel, nw::Int, bus_id::Int, vmposmax::Real; vmposmin::Real=nothing)
+function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedIVRModel, nw::Int, bus_id::Int, vmposmax::Real, vmposmin::Real)
     if !haskey(PMD.var(pm, nw_id_default), :vmpossqr)
         PMD.var(pm, nw_id_default)[:vmpossqr] = Dict{Int, Any}()
         PMD.var(pm, nw_id_default)[:vmnegsqr] = Dict{Int, Any}()
@@ -66,7 +68,7 @@ function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractU
     vmpossqr = JuMP.@expression(pm.model, vrepos^2+vimpos^2)
     # finally, apply constraint
     JuMP.@constraint(pm.model, vmpossqr <= vmposmax^2)
-    !isnothing(vmposmin) ? JuMP.@constraint(pm.model, vmpossqr >= vmposmin^2) : nothing
+    JuMP.@constraint(pm.model, vmpossqr >= vmposmin^2)
 
     PMD.sol(pm, nw, :bus, bus_id)[:vmpossqr] = vmpossqr
 end
@@ -98,6 +100,8 @@ function constraint_mc_bus_voltage_magnitude_zero_sequence(pm::PMD.AbstractUnbal
     vmzerosqr = JuMP.@expression(pm.model, vrezero^2+vimzero^2)
     # finally, apply constraint
     JuMP.@constraint(pm.model, vmzerosqr <= vmzeromax^2)
+
+    PMD.sol(pm, nw, :bus, bus_id)[:vmzerosqr] = vmzerosqr
 end
 
 
@@ -146,4 +150,7 @@ function constraint_mc_bus_voltage_magnitude_vuf(pm::PMD.AbstractUnbalancedIVRMo
     # DEBUGGING: save references for post check
     #PMD.var(pm, nw_id_default, :vmpossqr)[bus_id] = vmpossqr
     #PMD.var(pm, nw_id_default, :vmnegsqr)[bus_id] = vmnegsqr
+
+    PMD.sol(pm, nw, :bus, bus_id)[:vmnegsqr] = vmnegsqr
+    PMD.sol(pm, nw, :bus, bus_id)[:vmpossqr] = vmpossqr
 end

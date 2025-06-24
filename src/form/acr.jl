@@ -1,27 +1,27 @@
-"""
-    function constraint_mc_voltage_reference(
-        pm::ExplicitNeutralModels,
-        id::Int;
-        nw::Int=nw_id_default,
-        bounded::Bool=true,
-        report::Bool=true,
-    )
+# """
+#     function constraint_mc_voltage_reference(
+#         pm::ExplicitNeutralModels,
+#         id::Int;
+#         nw::Int=nw_id_default,
+#         bounded::Bool=true,
+#         report::Bool=true,
+#     )
 
-Imposes suitable constraints for the voltage at the reference bus
-"""
-function constraint_mc_voltage_reference(pm::PMD.AbstractUnbalancedPowerModel, id::Int; nw::Int=PMD.nw_id_default, bounded::Bool=true, report::Bool=true)
-    bus = PMD.ref(pm, nw, :bus, id)
-    terminals = bus["terminals"]
-    grounded = bus["grounded"]
+# Imposes suitable constraints for the voltage at the reference bus
+# """
+# function constraint_mc_voltage_reference(pm::PMD.AbstractUnbalancedPowerModel, id::Int; nw::Int=PMD.nw_id_default, bounded::Bool=true, report::Bool=true)
+#     bus = PMD.ref(pm, nw, :bus, id)
+#     terminals = bus["terminals"]
+#     grounded = bus["grounded"]
 
-    if haskey(bus, "va") && !haskey(bus, "vm")
-        constraint_mc_theta_ref(pm, id; nw=nw)
-    elseif haskey(bus, "vm") && !haskey(bus, "va")
-        constraint_mc_voltage_magnitude_fixed(pm, nw, id, bus["vm"], terminals, grounded)
-    elseif haskey(bus, "vm") && haskey(bus, "va")
-        constraint_mc_voltage_fixed(pm, nw, id, bus["vm"], bus["va"], terminals, grounded)
-    end
-end
+#     if haskey(bus, "va") && !haskey(bus, "vm")
+#         constraint_mc_theta_ref(pm, id; nw=nw)
+#     elseif haskey(bus, "vm") && !haskey(bus, "va")
+#         constraint_mc_voltage_magnitude_fixed(pm, nw, id, bus["vm"], terminals, grounded)
+#     elseif haskey(bus, "vm") && haskey(bus, "va")
+#         constraint_mc_voltage_fixed(pm, nw, id, bus["vm"], bus["va"], terminals, grounded)
+#     end
+# end
 
 
 """
@@ -273,7 +273,7 @@ vuf = |U-|/|U+|
 |U-| <= vufmax*|U+|
 |U-|^2 <= vufmax^2*|U+|^2
 """
-function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACRModel, nw::Int, bus_id::Int, vmposmax::Real; vmposmin::Real=0.0)
+function constraint_mc_bus_voltage_magnitude_positive_sequence(pm::PMD.AbstractUnbalancedACRModel, nw::Int, bus_id::Int, vmposmax::Real, vmposmin::Real)
     if !haskey(PMD.var(pm, PMD.nw_id_default), :vmpossqr)
         PMD.var(pm, PMD.nw_id_default)[:vmpossqr] = Dict{Int, Any}()
         # PMD.var(pm, PMD.nw_id_default)[:vmnegsqr] = Dict{Int, Any}()

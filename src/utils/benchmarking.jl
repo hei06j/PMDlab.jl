@@ -59,7 +59,7 @@ function augment_math_3wire!(math; relax_vsource=true, reverse_va_rotation=false
         # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
         math["bus"]["$(ref_bus[1])"]["va"] = va_vector
         math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "va fix seq"
-    else
+    else # "3vm 3va fix"
         ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
         math["bus"]["$(ref_bus[1])"]["vmin"] .= 0
         math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf
@@ -185,6 +185,7 @@ function add_sequence_voltage_bounds!(math)
     for (i, bus) in math["bus"]
         if parse(Int, i) ∉ tr_bus_list
             # bus["vm_seq_pos_max"] = 1.1
+            # bus["vm_seq_pos_min"] = 0.8
             bus["vm_seq_neg_max"] = 0.02
             # bus["vm_seq_zero_max"] = 0.02
             # bus["vm_vuf_max"] = 2# 0.02

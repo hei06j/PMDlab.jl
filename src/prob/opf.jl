@@ -17,7 +17,8 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedPowerModel)
     PMD.constraint_mc_model_voltage(pm)
 
     for i in PMD.ids(pm, :ref_buses)
-        PMD.constraint_mc_theta_ref(pm, i)
+        # PMD.constraint_mc_theta_ref(pm, i)
+        constraint_mc_voltage_reference(pm, i)
     end
 
     # generators should be constrained before KCL, or Pd/Qd undefined
@@ -109,7 +110,8 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedIVRModel)
     # Constraints
     for i in PMD.ids(pm, :ref_buses)
         # constraint_mc_voltage_reference(pm, i)
-        PMD.constraint_mc_theta_ref(pm, i)
+        # PMD.constraint_mc_theta_ref(pm, i)
+        constraint_mc_voltage_reference(pm, i)
     end
 
     # gens should be constrained before KCL, or Pd/Qd undefined
@@ -177,8 +179,8 @@ function build_mc_opf(pm::PMD.AbstractExplicitNeutralIVRModel)
     for i in PMD.ids(pm, :bus)
 
         if i in PMD.ids(pm, :ref_buses)
-            # PMD.constraint_mc_voltage_reference(pm, i)
-            constraint_mc_voltage_reference(pm, i)
+            PMD.constraint_mc_voltage_reference(pm, i)
+            # constraint_mc_voltage_reference(pm, i)
         end
 
         PMD.constraint_mc_voltage_absolute(pm, i)

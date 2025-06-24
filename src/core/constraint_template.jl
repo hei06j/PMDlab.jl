@@ -17,10 +17,10 @@ function constraint_mc_voltage_reference(pm::PMD.AbstractUnbalancedPowerModel, i
         constraint_mc_3vm3va_fixed(pm, nw, id, bus["vm"], bus["va"])
     elseif voltage_source_type == "3va fix"
         constraint_mc_3va_fixed(pm, nw, id, bus["va"])
-    elseif relax_vsource == "va fix va diff"
-        constraint_mc_vafix_vadiff(pm, nw, id, bus["va"], bus["vadelta"])
-    elseif relax_vsource == "va fix seq"
-        constraint_mc_vafix_seq(pm, nw, id, bus["va"], bus["vm_seq_pos_min"], bus["vm_seq_pos_max"], bus["vm_seq_neg_max"])
+    elseif voltage_source_type == "va fix va diff"
+        constraint_mc_vafix_vadiff(pm, nw, id, bus["va"][1], bus["vadelta"])
+    elseif voltage_source_type == "va fix seq"
+        constraint_mc_vafix_seq(pm, nw, id, bus["va"][1], bus["vm_seq_pos_min"], bus["vm_seq_pos_max"], bus["vm_seq_neg_max"])
     end
 end
 
@@ -40,8 +40,8 @@ function constraint_mc_3vm3va_fixed(pm::PMD.AbstractUnbalancedACRModel, nw::Int,
     vr = PMD.var(pm, nw, :vr, i)
     vi = PMD.var(pm, nw, :vi, i)
 
-    JuMP.@constraint(pm.model, vr .== vm .* cos(va))
-    JuMP.@constraint(pm.model, vi .== vm .* sin(va))
+    JuMP.@constraint(pm.model, vr .== vm .* cos.(va))
+    JuMP.@constraint(pm.model, vi .== vm .* sin.(va))
 end
 
 
@@ -140,22 +140,22 @@ function constraint_mc_vafix_vadiff(pm::PMD.AbstractUnbalancedACRModel, nw::Int,
     Im_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] - vi[2]*vi[3])*sqrt(3)/2 - (vr[2]*vi[3]+vi[2]*vr[3])/2 )
     Im_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] - vi[3]*vi[1])*sqrt(3)/2 - (vr[3]*vi[1]+vi[3]*vr[1])/2 )
 
-    if va[1] == pi/2
+    if va == pi/2
         JuMP.@constraint(pm.model, vr[1] == 0)
         JuMP.@constraint(pm.model, vi[1] >= 0)
-    elseif va[1] == -pi/2
+    elseif va == -pi/2
         JuMP.@constraint(pm.model, vr[1] == 0)
         JuMP.@constraint(pm.model, vi[1] <= 0)
-    elseif va[1] == 0
+    elseif va == 0
         JuMP.@constraint(pm.model, vr[1] >= 0)
         JuMP.@constraint(pm.model, vi[1] == 0)
-    elseif va[1] == pi
+    elseif va == pi
         JuMP.@constraint(pm.model, vr[1] >= 0)
         JuMP.@constraint(pm.model, vi[1] == 0)
     else
-        JuMP.@constraint(pm.model, vi[1] == tan(va[1])*vr[1])
+        JuMP.@constraint(pm.model, vi[1] == tan(va)*vr[1])
         # va also implies a sign for vr, vi
-        if 0<=va[1] && va[1] <= pi
+        if 0<=va && va <= pi
             JuMP.@constraint(pm.model, vi[1] >= 0)
         else
             JuMP.@constraint(pm.model, vi[1] <= 0)
@@ -184,7 +184,7 @@ Fixes the voltage variables at bus `i` to `vm.*exp.(im*va)`
 This function fixes the phase `a` voltage angle.
 """
 function constraint_mc_vafix_vadiff(pm::PMD.AbstractUnbalancedACPModel, nw::Int, i::Int, va::Real, vadelta::Real)
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] == va[1])
+    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] == va)
 
     JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] <= (120 + vadelta) * pi/180)
     JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] >= (120 - vadelta) * pi/180)
@@ -240,7 +240,7 @@ function constraint_mc_vafix_seq(pm::PMD.AbstractUnbalancedACRModel, nw::Int, i:
     end
 
     constraint_mc_bus_voltage_magnitude_negative_sequence(pm, nw, i, vm_seq_neg_max)
-    constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, i, vm_seq_pos_max, vmposmin=vm_seq_pos_min)
+    constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, i, vm_seq_pos_max, vm_seq_pos_min)
 end
 
 """
@@ -261,7 +261,7 @@ function constraint_mc_vafix_seq(pm::PMD.AbstractUnbalancedACPModel, nw::Int, i:
     JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] == va)
 
     constraint_mc_bus_voltage_magnitude_negative_sequence(pm, nw, i, vm_seq_neg_max)
-    constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, i, vm_seq_pos_max, vmposmin=vm_seq_pos_min)
+    constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, i, vm_seq_pos_max, vm_seq_pos_min)
 end
 
 
@@ -291,8 +291,9 @@ function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACPModel, b
     end
 
     if haskey(bus, "vm_seq_pos_max")
-        # PMD.constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"])
-        constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"])
+        # PMD.constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"], bus["vm_seq_pos_min"])
+        constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"], bus["vm_seq_pos_min"])
+        
     end
 
     if haskey(bus, "vm_seq_zero_max")
@@ -328,7 +329,7 @@ function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACRModel, b
     end
 
     if haskey(bus, "vm_seq_pos_max")
-        constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"])
+        constraint_mc_bus_voltage_magnitude_positive_sequence(pm, nw, bus_id, bus["vm_seq_pos_max"], bus["vm_seq_pos_min"])
     end
 
     if haskey(bus, "vm_seq_zero_max")
