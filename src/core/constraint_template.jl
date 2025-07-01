@@ -21,6 +21,8 @@ function constraint_mc_voltage_reference(pm::PMD.AbstractUnbalancedPowerModel, i
         constraint_mc_vafix_vadiff(pm, nw, id, bus["va"][1], bus["vadelta"])
     elseif voltage_source_type == "va fix seq"
         constraint_mc_vafix_seq(pm, nw, id, bus["va"][1], bus["vm_seq_pos_min"], bus["vm_seq_pos_max"], bus["vm_seq_neg_max"])
+    elseif voltage_source_type == "va fix"
+        constraint_mc_vafix(pm, nw, id, bus["va"][1])
     end
 end
 
@@ -131,14 +133,14 @@ This function fixes the phase `a` voltage angle.
 function constraint_mc_vafix_vadiff(pm::PMD.AbstractUnbalancedACRModel, nw::Int, i::Int, va::Real, vadelta::Real)
     vr = PMD.var(pm, nw, :vr, i)
     vi = PMD.var(pm, nw, :vi, i)
-
-    Re_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] - vi[1]*vi[2])/2 + (vr[1]*vi[2]+vi[1]*vr[2])*sqrt(3)/2 )
-    Re_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] - vi[2]*vi[3])/2 + (vr[2]*vi[3]+vi[2]*vr[3])*sqrt(3)/2 )
-    Re_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] - vi[3]*vi[1])/2 + (vr[3]*vi[1]+vi[3]*vr[1])*sqrt(3)/2 )
     
-    Im_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] - vi[1]*vi[2])*sqrt(3)/2 - (vr[1]*vi[2]+vi[1]*vr[2])/2 )
-    Im_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] - vi[2]*vi[3])*sqrt(3)/2 - (vr[2]*vi[3]+vi[2]*vr[3])/2 )
-    Im_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] - vi[3]*vi[1])*sqrt(3)/2 - (vr[3]*vi[1]+vi[3]*vr[1])/2 )
+    Re_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] + vi[1]*vi[2])/2 + (-vr[1]*vi[2] + vi[1]*vr[2])*sqrt(3)/2 )
+    Re_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] + vi[2]*vi[3])/2 + (-vr[2]*vi[3] + vi[2]*vr[3])*sqrt(3)/2 )
+    Re_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] + vi[3]*vi[1])/2 + (-vr[3]*vi[1] + vi[3]*vr[1])*sqrt(3)/2 )
+    
+    Im_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] + vi[1]*vi[2])*sqrt(3)/2 - (-vr[1]*vi[2] + vi[1]*vr[2])/2 )
+    Im_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] + vi[2]*vi[3])*sqrt(3)/2 - (-vr[2]*vi[3] + vi[2]*vr[3])/2 )
+    Im_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] + vi[3]*vi[1])*sqrt(3)/2 - (-vr[3]*vi[1] + vi[3]*vr[1])/2 )
 
     if va == pi/2
         JuMP.@constraint(pm.model, vr[1] == 0)
@@ -186,14 +188,14 @@ This function fixes the phase `a` voltage angle.
 function constraint_mc_vafix_vadiff(pm::PMD.AbstractUnbalancedACPModel, nw::Int, i::Int, va::Real, vadelta::Real)
     JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] == va)
 
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] <= (120 + vadelta) * pi/180)
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] >= (120 - vadelta) * pi/180)
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] - 120 * pi/180) <= tan((vadelta) * pi/180))
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] - 120 * pi/180) >= tan((-vadelta) * pi/180))
 
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] <= (120 - 360 + vadelta) * pi/180) # TODO we may need to add 360 degees
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] >= (120 - 360 - vadelta) * pi/180) # TODO we may need to add 360 degees
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] - 120 * pi/180) <= tan((vadelta) * pi/180))
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] - 120 * pi/180) >= tan((-vadelta) * pi/180))
 
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] <= (120 + vadelta) * pi/180)
-    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] >= (120 - vadelta) * pi/180)
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] - 120 * pi/180) <= tan((vadelta) * pi/180))
+    JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] - 120 * pi/180) >= tan((-vadelta) * pi/180))
 
     ## TODO we may need to add another constraint to ensure angles are valid
     # JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] + PMD.var(pm, nw, :va, i)[2] + PMD.var(pm, nw, :va, i)[3] == 0)
@@ -266,6 +268,58 @@ end
 
 
 
+"""
+	function constraint_mc_vafix(
+		pm::AbstractUnbalancedACRModel,
+		nw::Int,
+		i::Int,
+		va::Real
+	)
+
+Fixes the voltage variables at bus `i` to `vm.*exp.(im*va)`
+"""
+function constraint_mc_vafix(pm::PMD.AbstractUnbalancedACRModel, nw::Int, i::Int, va::Real)
+    vr = PMD.var(pm, nw, :vr, i)
+    vi = PMD.var(pm, nw, :vi, i)
+    
+    if va == pi/2
+        JuMP.@constraint(pm.model, vr[1] == 0)
+        JuMP.@constraint(pm.model, vi[1] >= 0)
+    elseif va == -pi/2
+        JuMP.@constraint(pm.model, vr[1] == 0)
+        JuMP.@constraint(pm.model, vi[1] <= 0)
+    elseif va == 0
+        JuMP.@constraint(pm.model, vr[1] >= 0)
+        JuMP.@constraint(pm.model, vi[1] == 0)
+    elseif va == pi
+        JuMP.@constraint(pm.model, vr[1] >= 0)
+        JuMP.@constraint(pm.model, vi[1] == 0)
+    else
+        JuMP.@constraint(pm.model, vi[1] == tan(va)*vr[1])
+        # va also implies a sign for vr, vi
+        if 0<=va && va <= pi
+            JuMP.@constraint(pm.model, vi[1] >= 0)
+        else
+            JuMP.@constraint(pm.model, vi[1] <= 0)
+        end
+    end
+end
+
+"""
+	function constraint_mc_vafix(
+		pm::AbstractUnbalancedACPModel,
+		nw::Int,
+		i::Int,
+		va::Real
+	)
+
+Fixes the voltage variables at bus `i` to `vm.*exp.(im*va)`
+This function fixes the phase `a` voltage angle.
+"""
+function constraint_mc_vafix(pm::PMD.AbstractUnbalancedACPModel, nw::Int, i::Int, va::Real)
+    JuMP.@constraint(pm.model, PMD.var(pm, nw, :va, i)[1] == va)
+end
+
 
 
 
@@ -275,7 +329,7 @@ end
 
 Template function for bus voltage balance constraints.
 """
-function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACPModel, bus_id::Int; nw=PMD.nw_id_default)::Nothing
+function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACPModel, bus_id::Int; nw=PMD.nw_id_default)
     # @assert(length(PMD.ref(pm, nw, :conductor_ids))==3)
 
     bus = PMD.ref(pm, nw, :bus, bus_id)
@@ -315,7 +369,7 @@ end
 
 Template function for bus voltage balance constraints.
 """
-function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACRModel, bus_id::Int; nw=PMD.nw_id_default)::Nothing
+function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACRModel, bus_id::Int; nw=PMD.nw_id_default)
     # @assert(length(PMD.ref(pm, nw, :conductor_ids))==3)
 
     bus = PMD.ref(pm, nw, :bus, bus_id)
@@ -345,6 +399,52 @@ function constraint_mc_bus_voltage_balance(pm::PMD.AbstractUnbalancedACRModel, b
 end
 
 
+function constraint_mc_bus_voltage_angle_difference(pm::PMD.AbstractUnbalancedACPModel, i::Int; nw=PMD.nw_id_default)
+    # @assert(length(PMD.ref(pm, nw, :conductor_ids))==3)
+    bus = PMD.ref(pm, nw, :bus, i)
+
+    if haskey(bus, "va_delta")
+        vadelta = bus["va_delta"]
+
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] - 120 * pi/180) <= tan((vadelta) * pi/180))
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[1] - PMD.var(pm, nw, :va, i)[2] - 120 * pi/180) >= tan((-vadelta) * pi/180))
+
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] - 120 * pi/180) <= tan((vadelta) * pi/180))
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[2] - PMD.var(pm, nw, :va, i)[3] - 120 * pi/180) >= tan((-vadelta) * pi/180))
+
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] - 120 * pi/180) <= tan((vadelta) * pi/180))
+        JuMP.@constraint(pm.model, tan(PMD.var(pm, nw, :va, i)[3] - PMD.var(pm, nw, :va, i)[1] - 120 * pi/180) >= tan((-vadelta) * pi/180))
+    end
+end
+
+function constraint_mc_bus_voltage_angle_difference(pm::PMD.AbstractUnbalancedACRModel, i::Int; nw=PMD.nw_id_default)
+    # @assert(length(PMD.ref(pm, nw, :conductor_ids))==3)
+
+    bus = PMD.ref(pm, nw, :bus, i)
+
+    if haskey(bus, "va_delta")
+        vadelta = bus["va_delta"]
+
+        vr = PMD.var(pm, nw, :vr, i)
+        vi = PMD.var(pm, nw, :vi, i)
+        
+        Re_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] + vi[1]*vi[2])/2 + (-vr[1]*vi[2] + vi[1]*vr[2])*sqrt(3)/2 )
+        Re_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] + vi[2]*vi[3])/2 + (-vr[2]*vi[3] + vi[2]*vr[3])*sqrt(3)/2 )
+        Re_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] + vi[3]*vi[1])/2 + (-vr[3]*vi[1] + vi[3]*vr[1])*sqrt(3)/2 )
+        
+        Im_vavb = JuMP.@expression(pm.model, - (vr[1]*vr[2] + vi[1]*vi[2])*sqrt(3)/2 - (-vr[1]*vi[2] + vi[1]*vr[2])/2 )
+        Im_vbvc = JuMP.@expression(pm.model, - (vr[2]*vr[3] + vi[2]*vi[3])*sqrt(3)/2 - (-vr[2]*vi[3] + vi[2]*vr[3])/2 )
+        Im_vcva = JuMP.@expression(pm.model, - (vr[3]*vr[1] + vi[3]*vi[1])*sqrt(3)/2 - (-vr[3]*vi[1] + vi[3]*vr[1])/2 )
+
+        JuMP.@constraint(pm.model, Im_vavb <= tan(vadelta * pi/180) * Re_vavb)
+        JuMP.@constraint(pm.model, Im_vbvc <= tan(vadelta * pi/180) * Re_vbvc)
+        JuMP.@constraint(pm.model, Im_vcva <= tan(vadelta * pi/180) * Re_vcva)
+
+        JuMP.@constraint(pm.model, Im_vavb >= -tan(vadelta * pi/180) * Re_vavb)
+        JuMP.@constraint(pm.model, Im_vbvc >= -tan(vadelta * pi/180) * Re_vbvc)
+        JuMP.@constraint(pm.model, Im_vcva >= -tan(vadelta * pi/180) * Re_vcva)
+    end
+end
 
 # """
 # Bounds the current magnitude at both from and to side of a branch

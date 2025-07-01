@@ -1,3 +1,12 @@
+function make_impedances_symmetric!(math)
+    for (l, branch) in math["branch"]
+        r = branch["br_r"]
+        x = branch["br_x"]
+        branch["br_r"] .= (r .+ r[[2, 3, 1],[2, 3, 1]] + r[[3, 1, 2],[3, 1,2]])./3
+        branch["br_x"] .= (x .+ x[[2, 3, 1],[2, 3, 1]] + x[[3, 1, 2],[3, 1,2]])./3
+    end
+end
+
 function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sbase=1)
 
     if line_current_rating
@@ -15,39 +24,70 @@ function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sb
 end
 
 
-function augment_math_3wire!(math; relax_vsource=true, reverse_va_rotation=false, Vsequence_bounds=true, cost_multiplier=1000)
+function augment_math_3wire!(math; vsource_model="3vm 3va fix", source_va_rotation="pos", bus_angle_diff_bounds=true, Vsequence_bounds=true, balanced_impedance=false, initialize_rotation="pos", cost_multiplier=1000)
     math["is_kron_reduced"] = true
     
     fix_data_parsing_issues!(math)       # ensuring length-3 vector across 3-wire data model
 
-    if Vsequence_bounds
+    if balanced_impedance
+        make_impedances_symmetric!(math)     # make impedance matrices balanced
+    end
+
+    if bus_angle_diff_bounds || Vsequence_bounds
+        @assert source_va_rotation == initialize_rotation "source va rotation and initialization are inconsistent in presence of bounds"
+    end
+
+    if source_va_rotation !== initialize_rotation
+        @warn("source va rotation and initialization are inconsistent")
+    end
+
+    # Vsequence_bounds = "pos", "neg", "zero", "vuf" TODO
+    if Vsequence_bounds 
+        @assert source_va_rotation == "pos"  "The bus voltage sequence bounds should only be active for positive sequence initialization"
         add_sequence_voltage_bounds!(math)   # add sequence voltage bounds
     end
 
-    if reverse_va_rotation
-        va_vector = [0, 120, -120] .* pi/180
-    else
-        va_vector = [0, -120, 120] .* pi/180
+    if bus_angle_diff_bounds 
+        @assert source_va_rotation == "pos"  "The bus voltage angle difference bounds should only be active for positive sequence initialization"
+        add_bus_angle_diff_bounds!(math)   # add sequence voltage bounds
     end
 
-    # relax_vsource = "all fixed", "va fixed", "one va fixed"
-    ### changing ref_bus voltage bounds
-    if relax_vsource == "3va fix"
+    ### source_va_rotation = "pos", "neg", "zero"
+    va_vector = []
+    if source_va_rotation == "pos"
+        va_vector = [0, -120, 120] .* pi/180
+    elseif source_va_rotation == "neg"
+        va_vector = [0, 120, -120] .* pi/180
+    elseif source_va_rotation == "zero"
+        va_vector = [0, 0, 0] .* pi/180
+    else
+        Error("source_va_rotation option not identified")
+    end
+
+    ### vsource_model = "3vm 3va fix", "3va fix", "va fix va diff", "va fix seq"
+    if vsource_model == "3va fix"
         ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
         math["bus"]["$(ref_bus[1])"]["vmin"] = 0.9 .* ones(3)
         math["bus"]["$(ref_bus[1])"]["vmax"] = 1.1 .* ones(3)
         # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
         math["bus"]["$(ref_bus[1])"]["va"] = va_vector
         math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "3va fix"
-    elseif relax_vsource == "va fix va diff"
+    elseif vsource_model == "va fix va diff"
         ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
-        math["bus"]["$(ref_bus[1])"]["vmin"] = 0.9 .* ones(3)
-        math["bus"]["$(ref_bus[1])"]["vmax"] = 1.1 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmin"] .= 0   # 0.9 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf # 1.1 .* ones(3)
         # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
         math["bus"]["$(ref_bus[1])"]["va"] = va_vector
         math["bus"]["$(ref_bus[1])"]["vadelta"] = 30
         math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "va fix va diff"
-    elseif relax_vsource == "va fix seq"
+    elseif vsource_model == "va fix"
+        ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
+        math["bus"]["$(ref_bus[1])"]["vmin"] .= 0   # 0.9 .* ones(3)
+        math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf # 1.1 .* ones(3)
+        # math["bus"]["$(ref_bus[1])"]["vm"] = [1, 1, 1]
+        math["bus"]["$(ref_bus[1])"]["va"] = va_vector
+        math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "va fix"
+    elseif vsource_model == "va fix seq"
         ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
         math["bus"]["$(ref_bus[1])"]["vmin"] .= 0   # 0.9 .* ones(3)
         math["bus"]["$(ref_bus[1])"]["vmax"] .= Inf # 1.1 .* ones(3)
@@ -67,7 +107,7 @@ function augment_math_3wire!(math; relax_vsource=true, reverse_va_rotation=false
         math["bus"]["$(ref_bus[1])"]["va"] = va_vector
         math["bus"]["$(ref_bus[1])"]["voltage_source_type"] = "3vm 3va fix"
     end
-    # if relax_vsource_vm
+    # if vsource_model_vm
     #     ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
     #     math["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
     #     math["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
@@ -105,12 +145,26 @@ function augment_math_3wire!(math; relax_vsource=true, reverse_va_rotation=false
             load["model"] = PMD.IMPEDANCE
         end
     end
+
+
+    ## how to initialise
+    if initialize_rotation == "pos"
+        add_start_positive_sequence!(math)  # this works with bus angle difference and voltage sequence constraints, and source_va_rotation="pos"
+
+    elseif initialize_rotation == "neg"
+        add_start_negative_sequence!(math)  # this works without bus angle difference and voltage sequence constraints, and source_va_rotation="neg"
+        
+    elseif initialize_rotation == "zero"
+        add_start_zero_sequence!(math)      # this works without bus angle difference and voltage sequence constraints, and source_va_rotation="zero"
+    else
+        PMD.add_start_voltage!(math, coordinates=:rectangular, explicit_neutral=false)
+    end
 end
 
 
-function augment_network_data_4wire!(math; relax_vsource_vm=true, cost_multiplier=1000)
+function augment_network_data_4wire!(math; vsource_model_vm=true, cost_multiplier=1000)
     ### changing ref_bus voltage bounds
-    if relax_vsource_vm
+    if vsource_model_vm
         ref_bus = [i for (i,bus) in math["bus"] if occursin("source", bus["name"])]
         math["bus"]["$(ref_bus[1])"]["vmin"] *= 0.98
         math["bus"]["$(ref_bus[1])"]["vmax"] *= 1.02
@@ -193,6 +247,19 @@ function add_sequence_voltage_bounds!(math)
     end
 end
 
+function add_bus_angle_diff_bounds!(math)
+    tr_bus_list = []
+    if !isempty(math["transformer"])
+        tr_bus_list = get_transformer_buses(math)
+    end
+    
+    for (i, bus) in math["bus"]
+        if parse(Int, i) ∉ tr_bus_list
+            bus["va_delta"] = 30  # degrees
+        end
+    end
+end
+
 
 function get_transformer_buses(math)
     bus_list = []
@@ -248,4 +315,36 @@ function fix_data_parsing_issues!(math)
         math["conductor_ids"] = math["conductor_ids"][1:3]
     end
     
+end
+
+
+### initialization functions
+function add_start_positive_sequence!(math)
+    vrvi_start = [1.0 + 0.0im, -0.4999999999999998 - 0.8660254037844387im, -0.4999999999999998 + 0.8660254037844387im]
+    for (i, bus) in math["bus"]
+        bus["vr_start"] = real.(vrvi_start)
+        bus["vr_start"] = imag.(vrvi_start)
+        bus["vm_start"] = abs.(vrvi_start)
+        bus["va_start"] = angle.(vrvi_start)
+    end
+end
+
+function add_start_negative_sequence!(math)
+    vrvi_start = [1.0 + 0.0im, -0.4999999999999998 + 0.8660254037844387im, -0.4999999999999998 - 0.8660254037844387im]
+    for (i, bus) in math["bus"]
+        bus["vr_start"] = real.(vrvi_start)
+        bus["vr_start"] = imag.(vrvi_start)
+        bus["vm_start"] = abs.(vrvi_start)
+        bus["va_start"] = angle.(vrvi_start)
+    end
+end
+
+function add_start_zero_sequence!(math)
+    vrvi_start = [1.0 + 0.0im, 1.0 + 0.0im, 1.0 + 0.0im]
+    for (i, bus) in math["bus"]
+        bus["vr_start"] = real.(vrvi_start)
+        bus["vr_start"] = imag.(vrvi_start)
+        bus["vm_start"] = abs.(vrvi_start)
+        bus["va_start"] = angle.(vrvi_start)
+    end
 end

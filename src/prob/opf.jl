@@ -33,29 +33,11 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedPowerModel)
 
     for i in PMD.ids(pm, :bus)
         PMD.constraint_mc_power_balance(pm, i)
+        constraint_mc_bus_voltage_balance(pm, i)
 
-        # ## do not add sequence voltage constraints on transformer buses, until we figure out why ACP has problem with it. ACR and IVR are ok.
-        # tr_bus_list = []
-        # transformers = PMD.ref(pm, PMD.nw_id_default, :transformer)
-        # if !isempty(transformers)
-        #     # tr_bus_list = get_transformer_buses(transformers)
-        #     for (i, tr) in transformers
-        #         tr_fbus = tr["f_bus"]
-        #         tr_tbus = tr["t_bus"]
-        #         append!(tr_bus_list, tr_fbus)
-        #         append!(tr_bus_list, tr_tbus)
-                
-        #         branches = PMD.ref(pm, PMD.nw_id_default, :branch)
-        #         tr_branches = [b for (b, branch) in branches if (branch["f_bus"] ∈ [tr_fbus, tr_tbus] || branch["t_bus"] ∈ [tr_fbus, tr_tbus])]
-        #         for b in tr_branches
-        #             append!(tr_bus_list, branches[b]["f_bus"])
-        #             append!(tr_bus_list, branches[b]["t_bus"])
-        #         end
-        #     end
-        # end
-        # if i ∉ tr_bus_list
-            constraint_mc_bus_voltage_balance(pm, i)  # This is added to the ACP and ACR
-        # end
+        if i ∉ PMD.ids(pm, :ref_buses)
+            constraint_mc_bus_voltage_angle_difference(pm, i)
+        end
     end
 
     for i in PMD.ids(pm, :storage)
@@ -127,6 +109,10 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedIVRModel)
     for i in PMD.ids(pm, :bus)
         PMD.constraint_mc_current_balance(pm, i)
         constraint_mc_bus_voltage_balance(pm, i)  # This is added to the IVR
+
+        if i ∉ PMD.ids(pm, :ref_buses)
+            constraint_mc_bus_voltage_angle_difference(pm, i)
+        end
     end
 
     for i in PMD.ids(pm, :branch)
@@ -135,7 +121,7 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedIVRModel)
 
         PMD.constraint_mc_bus_voltage_drop(pm, i)
 
-        # PMD.constraint_mc_voltage_angle_difference(pm, i)
+        PMD.constraint_mc_voltage_angle_difference(pm, i)
 
         PMD.constraint_mc_thermal_limit_from(pm, i)
         PMD.constraint_mc_thermal_limit_to(pm, i)

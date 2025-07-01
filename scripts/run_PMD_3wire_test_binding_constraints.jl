@@ -43,7 +43,7 @@ for network_dir in readdir(ENWL_3W_EMBD_DIR)
                 PMDlab.augment_eng_3wire!(eng3w; line_current_rating=true, sbase=1)
 
                 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
-                PMDlab.augment_math_3wire!(math3w; relax_vsource_vm=true, Vsequence_bounds=true, cost_multiplier=1000)  # chaning some of the input data
+                PMDlab.augment_math_3wire!(math3w; vsource_model_vm=true, Vsequence_bounds=true, cost_multiplier=1000)  # chaning some of the input data
 
                 result3w_acp = PMD.solve_mc_model(math3w, ACPUPowerModel, optimizer, PMDlab.build_mc_opf)
                 vneg_acp = [math3w["bus"][i]["vm_seq_neg_max"]-sqrt(JuMP.value(bus["vmnegsqr"])+1E-10) for (i,bus) in result3w_acp["solution"]["bus"] if haskey(bus, "vmnegsqr")]
