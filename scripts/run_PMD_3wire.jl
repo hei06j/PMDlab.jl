@@ -54,11 +54,9 @@ balanced_impedance = false
 
 """ Formulations for OPF
     OPTIONS: "IVR", "ACR", "ACP" """
-formulation = "ACP"
+formulation = "IVR"
 
 """
-TODO: vsource_model="va fix va diff" to be fixed
-
 if either  bus_angle_diff_bounds or Vsequence_bounds are true, source_va_rotation and initialize_rotation should be the same.
     otherwise, they can be different, but we need to test feasibility and alignment.
 
@@ -66,6 +64,18 @@ if vsource_model is "va fix", "va fix va diff", "va fix seq", source_va_rotation
     so initialize_rotation can be any option, but still check for convergence.
 """
 
+
+"""
+What to test:
+- "reduce line" and "line_current_rating" always true
+- "vsource_model" test all 5 to check convergence
+- "source_va_rotation" and "initialize_rotation" test compatible options (pos-pos, neg-neg, zero-zero)
+- "Vsequence_bounds" both cases
+- "bus_angle_diff_bounds" both cases
+- "balanced_impedance" both cases
+- "formulation" all cases - starting with ACP, IVR to test if ACP improves with angle difference bounds
+- optionally test "sbase" (constraint scaling) and "cost_multiplier" (objective scaling)
+"""
 ##
 eng3w = parse_file(file, transformations=[transform_loops!])
 PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1)
