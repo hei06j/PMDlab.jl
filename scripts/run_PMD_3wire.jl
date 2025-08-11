@@ -18,7 +18,7 @@ PMD.silence!()
 
 ## run optimal power flow IV rectangular
 file = "data/three-wire/network_23/Feeder_3/Master.dss"     # three-wire without transformer  SMALLEST network
-file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
+# file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
 
 """ line_current_rating adds thermal rating to lines.
     OPTIONS: true, false """
@@ -42,11 +42,11 @@ initialize_rotation = "pos"
 
 """ bus_angle_diff_bounds adds bus voltage angle difference bounds on buses other than the reference bus.
     OPTIONS: true, false """
-bus_angle_diff_bounds = false
+bus_angle_diff_bounds = true
 
 """ Vsequence_bounds adds voltage sequence bounds on buses other than the reference bus.
     OPTIONS: true, false """
-Vsequence_bounds = false
+Vsequence_bounds = true
 
 """ balanced_impedance makes all impedances balanced.
     OPTIONS: true, false """
@@ -105,7 +105,7 @@ elseif formulation == "ACP"
 end
 
 
-# check_active_bounds(result3w, math3w)
+PMDlab.check_active_bounds(result3w, math3w)
 
 ##
 

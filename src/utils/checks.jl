@@ -5,12 +5,17 @@ function check_active_bounds(result3w_ivr, math3w)
     vmzero_bounds = Dict()
     vmpos_bounds = Dict()
     vuf_bounds = Dict()
+    va_pp_bounds = Dict()
     for (i, bus) in result3w_ivr["solution"]["bus"]
         vm_bounds[i] = math3w["bus"][i]["vmin"] .< sqrt.(bus["vr"].^2 .+ bus["vi"].^2) .< math3w["bus"][i]["vmax"]
         vmneg_bounds[i] = haskey(bus, "vmnegsqr") ? sqrt(bus["vmnegsqr"]) < math3w["bus"][i]["vm_seq_neg_max"] : true
         vmzero_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(bus["vmzerosqr"]) < math3w["bus"][i]["vm_seq_zero_max"] : true
         vmpos_bounds[i] = haskey(bus, "vmpossqr") ? sqrt(bus["vmpossqr"]) < math3w["bus"][i]["vm_seq_pos_max"] : true
         vuf_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(bus["vmnegsqr"]/bus["vmpossqr"]) < math3w["bus"][i]["vm_vuf_max"] : true
+
+        T = [1 -1 0 ; 0 1 -1 ; -1 0 1]
+        va_pp_bounds[i] = haskey(math3w["bus"][i], "va_delta") ? -math3w["bus"][i]["va_delta"] .< PMD._wrap_to_180(T * angle.(bus["vr"] .+ im * bus["vi"]) .* 180/pi .- 120)  .< math3w["bus"][i]["va_delta"] : true
+
         if !all(vm_bounds[i])
             print("bus $i with active $(vm_bounds[i]) \n vm=$(sqrt.(bus["vr"].^2 .+ bus["vi"].^2)) and vmin=$(math3w["bus"][i]["vmin"]), vmax=$(math3w["bus"][i]["vmax"]) \n\n")
         end
@@ -26,14 +31,26 @@ function check_active_bounds(result3w_ivr, math3w)
         if !all(vuf_bounds[i])
             print("bus $i with active $(vuf_bounds[i]) \n vuf=$(sqrt(bus["vmnegsqr"]/bus["vmpossqr"])) and vuf_max=$(math3w["bus"][i]["vm_vuf_max"]) \n\n")
         end
+        if !all(va_pp_bounds[i])
+            print("bus $i with active $(va_pp_bounds[i]) \n va_pp=$(PMD._wrap_to_180(T * angle.(bus["vr"] .+ im * bus["vi"]) .* 180/pi .- 120)) and va_delta=$(math3w["bus"][i]["va_delta"]) \n\n")
+        end
     end
 
-
+    va_ij_bounds = Dict()
     cm_bounds = Dict()
-    for (i, branch) in result3w_ivr["solution"]["branch"]
-        cm_bounds[i] = sqrt.(branch["cr_fr"].^2 .+ branch["ci_fr"].^2) .<= math3w["branch"][i]["c_rating_a"]
+    for (i, branch) in math3w["branch"]
+        cm_bounds[i] = sqrt.(result3w_ivr["solution"]["branch"][i]["cr_fr"].^2 .+ result3w_ivr["solution"]["branch"][i]["ci_fr"].^2) .<= branch["c_rating_a"]
+        fbus = branch["f_bus"]
+        tbus = branch["t_bus"]
+        fbus_va = angle.(result3w_ivr["solution"]["bus"]["$fbus"]["vr"] .+ im * result3w_ivr["solution"]["bus"]["$fbus"]["vi"])
+        tbus_va = angle.(result3w_ivr["solution"]["bus"]["$tbus"]["vr"] .+ im * result3w_ivr["solution"]["bus"]["$tbus"]["vi"])
+        va_ij_bounds[i] = haskey(branch, "angmin") ? branch["angmin"] .< (fbus_va .- tbus_va) .< branch["angmax"] : true
+
         if !all(cm_bounds[i])
-            print("branch $i with active $(cm_bounds[i]) \n c_from=$(sqrt.(branch["cr_fr"].^2 .+ branch["ci_fr"].^2)) and c_rating_a=$(math3w["branch"][i]["c_rating_a"]) \n\n")
+            print("branch $i with active $(cm_bounds[i]) \n c_from=$(sqrt.(result3w_ivr["solution"]["branch"][i]["cr_fr"].^2 .+ result3w_ivr["solution"]["branch"][i]["ci_fr"].^2)) and c_rating_a=$(branch["c_rating_a"]) \n\n")
+        end
+        if !all(va_ij_bounds[i])
+            print("branch $i with active $(va_ij_bounds[i]) \n va_ij=$((fbus_va .- tbus_va) .* 180/pi) and angmin=$(branch["angmin"].*180/pi) and angmax=$(branch["angmax"].*180/pi) \n\n")
         end
     end
 
@@ -50,4 +67,6 @@ function check_active_bounds(result3w_ivr, math3w)
             print("gen $i with active $(qg_bounds[i]) \n qg=$(gen["qg"]) with qmin=$(math3w["gen"][i]["qmin"]) and qmax=$(math3w["gen"][i]["qmax"]) \n\n")
         end
     end
+
+    
 end
