@@ -83,7 +83,7 @@ end
 
 function import_data(instance, ::ThreeWire)
     eng3w = parse_file(instance, transformations=[transform_loops!])
-    eng3w["settings"]["sbase_default"] = 1
+    eng3w["settings"]["sbase"] = 1
     eng3w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
     eng3w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 
@@ -132,7 +132,7 @@ end
 
 function import_data(instance, ::FourWire)
     eng4w = parse_file(instance, transformations=[transform_loops!])
-    eng4w["settings"]["sbase_default"] = 1
+    eng4w["settings"]["sbase"] = 1
     eng4w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
     eng4w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 

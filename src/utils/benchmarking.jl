@@ -17,7 +17,7 @@ function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sb
         PMD.reduce_line_series!(eng, remove_original_lines=true)
     end
 
-    eng["settings"]["sbase_default"] = sbase    # change power base here
+    eng["settings"]["sbase"] = sbase    # change power base here
     eng["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
     eng["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 
