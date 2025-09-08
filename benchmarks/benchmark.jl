@@ -132,7 +132,6 @@ function import_data(instance, options)
     return math3w
 end
 
-
 function build_pm_model(instance, options)
     type = if options.formulation == "ACP"
         ACPUPowerModel
@@ -321,7 +320,7 @@ function run_all_benchmarks(solver, instances, dump_dir)
 end
 
 Comonicon.@main function main(; solver="ipopt", form="acp")
-    instances = scan_instances(DATA_DIR)[1:2]
+    instances = scan_instances(DATA_DIR)
 
     run_all_benchmarks(solve_ipopt, instances, "ipopt")
 

@@ -17,7 +17,7 @@ file = "data/four-wire/network_1/Feeder_2/Master.dss"
 
 eng4w = parse_file(file, transformations=[transform_loops!])
 PMDlab.add_linecode_normaps!(eng4w)           # add branch current limit
-eng4w["settings"]["sbase_default"] = 1        # change power base here
+eng4w["settings"]["sbase"] = 1        # change power base here
 eng4w["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
 eng4w["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 reduce_line_series!(eng4w, remove_original_lines=true)

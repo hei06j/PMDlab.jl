@@ -5,6 +5,8 @@ using PowerModelsDistribution
 using Ipopt
 using JuMP
 using LinearAlgebra
+using DataFrames
+using CSV
 
 import JuMP._CONSTRAINT_LIMIT_FOR_PRINTING
 JuMP._CONSTRAINT_LIMIT_FOR_PRINTING[] = 10000
@@ -18,7 +20,7 @@ PMD.silence!()
 
 ## run optimal power flow IV rectangular
 file = "data/three-wire/network_23/Feeder_3/Master.dss"     # three-wire without transformer  SMALLEST network
-file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
+# file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
 
 """ line_current_rating adds thermal rating to lines.
     OPTIONS: true, false """
@@ -42,11 +44,11 @@ initialize_rotation = "pos"
 
 """ bus_angle_diff_bounds adds bus voltage angle difference bounds on buses other than the reference bus.
     OPTIONS: true, false """
-bus_angle_diff_bounds = false
+bus_angle_diff_bounds = true
 
 """ Vsequence_bounds adds voltage sequence bounds on buses other than the reference bus.
     OPTIONS: true, false """
-Vsequence_bounds = false
+Vsequence_bounds = true
 
 """ balanced_impedance makes all impedances balanced.
     OPTIONS: true, false """
@@ -105,7 +107,7 @@ elseif formulation == "ACP"
 end
 
 
-# check_active_bounds(result3w, math3w)
+df, checks = PMDlab.check_active_bounds(result3w, math3w)
 
 ##
 
@@ -125,3 +127,38 @@ pg = [gen["pg"] for (i,gen) in result3w["solution"]["gen"]]
 #     # end
 #     print(f, pm.model)
 # end
+
+##
+
+## For all the test cases, the following new constraints are checked:
+### - negative sequence bound should be binding in some of the testcase
+### - current limits also should be binding in some of the testcase
+ENWL_3W_EMBD_DIR = "data/three-wire"
+
+checks_df = DataFrames.DataFrame()
+
+for network_dir in readdir(ENWL_3W_EMBD_DIR)
+    mn = match(r"network_(\d+)$"i, network_dir)
+    if !isnothing(mn)
+        n = mn.captures[1]
+        for feeder_dir in readdir("$ENWL_3W_EMBD_DIR/$network_dir")
+            mf = match(r"feeder_(\d+)$"i, feeder_dir)
+            if !isnothing(mf)
+                f = mf.captures[1]
+                case_dir = "$ENWL_3W_EMBD_DIR/$network_dir/$feeder_dir"
+
+                eng3w = parse_file(case_dir*"/Master.dss", transformations=[transform_loops!])
+                PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1)
+                math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
+                PMDlab.augment_math_3wire!(math3w; vsource_model=vsource_model, source_va_rotation=source_va_rotation, bus_angle_diff_bounds=bus_angle_diff_bounds, Vsequence_bounds=Vsequence_bounds, balanced_impedance=balanced_impedance, initialize_rotation=initialize_rotation, cost_multiplier=1000)  # changing some of the input data
+                pm = PMD.instantiate_mc_model(math3w, IVRUPowerModel, PMDlab.build_mc_opf);
+                result3w = PMD.solve_mc_model(math3w, IVRUPowerModel, optimizer, PMDlab.build_mc_opf)
+                df, _ = PMDlab.check_active_bounds(result3w, math3w)
+
+                append!(checks_df, df)
+            end
+        end
+    end
+end
+
+CSV.write("IVR_checks.csv", checks_df)

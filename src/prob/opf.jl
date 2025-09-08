@@ -73,6 +73,17 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedPowerModel)
 end
 
 
+function objective_min_losses(pm::PMD.AbstractUnbalancedIVRModel)
+    return JuMP.@objective(pm.model, Min,
+        sum(
+            sum(
+                sum( var(pm, n, :p_slack, i)[t]^2 + var(pm, n, :q_slack, i)[t]^2 for t in ref(pm, n, :bus, i, "terminals")
+                ) for (i,bus) in nw_ref[:bus]
+            ) for (n, nw_ref) in nws(pm))
+        )
+end
+
+
 """
 	function build_mc_opf(
 		pm::AbstractUnbalancedIVRModel
@@ -127,7 +138,7 @@ function build_mc_opf(pm::PMD.AbstractUnbalancedIVRModel)
         PMD.constraint_mc_thermal_limit_to(pm, i)
         constraint_mc_current_limit(pm, i)
     end
-
+    
     for i in PMD.ids(pm, :switch)
         PMD.constraint_mc_switch_state(pm, i)
         PMD.constraint_mc_switch_current_limit(pm, i)
