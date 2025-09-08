@@ -1,20 +1,13 @@
 
 using Comonicon
 using DelimitedFiles
+using LinearAlgebra
 using PMDlab
 using PowerModelsDistribution
 using Ipopt
-using KNITRO
-using NLPModelsKnitro
 using JuMP
-using LinearAlgebra
 
 import Base: Iterators
-
-using MadNLP
-using MadNLPHSL
-using ExaModels
-using NLPModels
 
 using HSL_jll
 
@@ -60,18 +53,6 @@ function NLPModels.jac_nln_structure!(model::ExaModels.ExaModel, rows, cols)
     NLPModels.jac_structure!(model, rows, cols)
     return rows, cols
 end
-function NLPModels.jac_nln_coord!(model::ExaModels.ExaModel, x, jac)
-    NLPModels.jac_coord!(model, x, jac)
-    return jac
-end
-function NLPModels.hess_structure(model::ExaModels.ExaModel)
-    nnzh = NLPModels.get_nnzh(model)
-    rows = zeros(Int, nnzh)
-    cols = zeros(Int, nnzh)
-    NLPModels.hess_structure!(model, rows, cols)
-    return rows, cols
-end
-
 
 #=
     JuMP utils
@@ -154,8 +135,6 @@ function solve_ipopt(model)
     JuMP.set_optimizer(model, Ipopt.Optimizer)
     JuMP.set_attribute(model, "max_iter", 1000)
     JuMP.set_attribute(model, "max_wall_time", 600.0)
-    # JuMP.set_attribute(model, "sb", "yes")
-    # JuMP.set_attribute(model, "warm_start_init_point", "yes")
     JuMP.set_attribute(model, "hsllib", HSL_jll.libhsl_path)
     JuMP.set_attribute(model, "linear_solver", "ma27")
     solve_time = @elapsed begin
@@ -170,90 +149,6 @@ function solve_ipopt(model)
         solve_time=solve_time,
         callback_time=_total_callback_time(model),
         iter=MOI.get(model, MOI.BarrierIterations()),
-    )
-end
-
-function solve_madnlp(model)
-    JuMP.set_optimizer(model, MadNLP.Optimizer)
-    JuMP.set_attribute(model, "max_iter", 1000)
-    JuMP.set_attribute(model, "max_wall_time", 600.0)
-    JuMP.set_attribute(model, "linear_solver", Ma27Solver)
-    solve_time = @elapsed begin
-        JuMP.optimize!(model)
-    end
-    success = JuMP.termination_status(model) == MOI.LOCALLY_SOLVED
-    return (
-        nvar=JuMP.num_variables(model),
-        ncon=_num_constraints(model),
-        success=success,
-        objective=JuMP.objective_value(model),
-        solve_time=solve_time,
-        callback_time=_total_callback_time(model),
-        iter=MOI.get(model, MOI.BarrierIterations()),
-    )
-end
-
-function solve_knitro(model)
-    JuMP.set_optimizer(model, KNITRO.Optimizer)
-    JuMP.set_attribute(model, "maxit", 1000)
-    JuMP.set_attribute(model, "maxtime_real", 600.0)
-    JuMP.set_attribute(model, "linsolver", 4) # ma27
-    solve_time = @elapsed begin
-        JuMP.optimize!(model)
-    end
-    success = JuMP.termination_status(model) == MOI.LOCALLY_SOLVED
-    return (
-        nvar=JuMP.num_variables(model),
-        ncon=_num_constraints(model),
-        success=success,
-        objective=JuMP.objective_value(model),
-        solve_time=solve_time,
-        callback_time=_total_callback_time(model),
-        iter=MOI.get(model, MOI.BarrierIterations()),
-    )
-end
-
-function solve_exa_madnlp(model)
-    nlp = ExaModels.ExaModel(model)
-    total_time = @elapsed begin
-        res = madnlp(
-            nlp;
-            linear_solver=Ma27Solver,
-            max_iter=1000,
-            max_wall_time=600.0,
-        )
-    end
-    success = res.status == MadNLP.SOLVE_SUCCEEDED
-    return (
-        nvar=NLPModels.get_nvar(nlp),
-        ncon=NLPModels.get_ncon(nlp),
-        success=success,
-        objective=res.objective,
-        solve_time=total_time,
-        callback_time=res.counters.eval_function_time,
-        iter=res.iter,
-    )
-end
-
-function solve_exa_knitro(model)
-    nlp = ExaModels.ExaModel(model)
-    total_time = @elapsed begin
-        res = knitro(
-            nlp;
-            linsolver=4,
-            maxit=1000,
-            maxtime_real=600.0,
-        )
-    end
-    success = res.status == :first_order
-    return (
-        nvar=NLPModels.get_nvar(nlp),
-        ncon=NLPModels.get_ncon(nlp),
-        success=success,
-        objective=res.objective,
-        solve_time=total_time,
-        callback_time=0.0,
-        iter=res.iter,
     )
 end
 
@@ -319,29 +214,10 @@ function run_all_benchmarks(solver, instances, dump_dir)
     end
 end
 
-Comonicon.@main function main(; solver="ipopt", form="acp")
+function main()
     instances = scan_instances(DATA_DIR)
-
     run_all_benchmarks(solve_ipopt, instances, "ipopt")
-
-    # options = OptionsBenchmark()
-
-    # if solver == "ipopt"
-    #     results = run_benchmark(solve_ipopt, instances, options)
-    #     dump_file = joinpath(@__DIR__, "..", "results", "ipopt_ma27_$(flag(options)).txt")
-    # elseif solver == "knitro"
-    #     results = run_benchmark(solve_knitro, instances, options)
-    #     dump_file = joinpath(@__DIR__, "..", "results", "knitro_ma27_$(flag(options)).txt")
-    # elseif solver == "exaknitro"
-    #     results = run_benchmark(solve_exa_knitro, instances, options)
-    #     dump_file = joinpath(@__DIR__, "..", "results", "exaknitro_ma27_$(flag(options)).txt")
-    # elseif solver == "madnlp"
-    #     results = run_benchmark(solve_madnlp, instances, options)
-    #     dump_file = joinpath(@__DIR__, "..", "results", "madnlp_ma27_$(flag(options)).txt")
-    # elseif solver == "examadnlp"
-    #     results = run_benchmark(solve_exa_madnlp, instances, options)
-    #     dump_file = joinpath(@__DIR__, "..", "results", "examadnlp_ma27_$(flag(options)).txt")
-    # end
-    # writedlm(dump_file, results)
 end
+
+main()
 
