@@ -1,5 +1,4 @@
 
-using Comonicon
 using DelimitedFiles
 using LinearAlgebra
 using PMDlab
@@ -47,11 +46,6 @@ function flag(opt::OptionsBenchmark)
     f7 = opt.balanced_impedance ? 1 : 0
 
     return "$(opt.formulation)_$(f1)_$(f2)_$(f2p)_$(f3)_$(f4)_$(f5)_$(f6)_$(f7)"
-end
-
-function NLPModels.jac_nln_structure!(model::ExaModels.ExaModel, rows, cols)
-    NLPModels.jac_structure!(model, rows, cols)
-    return rows, cols
 end
 
 #=
@@ -124,7 +118,7 @@ function build_pm_model(instance, options)
     return PMD.instantiate_mc_model(
         import_data(instance, options),
         type,
-        PMD.build_mc_opf;
+        PMDlab.build_mc_opf;
     )
 end
 
@@ -135,6 +129,8 @@ function solve_ipopt(model)
     JuMP.set_optimizer(model, Ipopt.Optimizer)
     JuMP.set_attribute(model, "max_iter", 1000)
     JuMP.set_attribute(model, "max_wall_time", 600.0)
+    JuMP.set_attribute(model, "sb", "yes")
+    JuMP.set_attribute(model, "warm_start_init_point", "yes")
     JuMP.set_attribute(model, "hsllib", HSL_jll.libhsl_path)
     JuMP.set_attribute(model, "linear_solver", "ma27")
     solve_time = @elapsed begin
