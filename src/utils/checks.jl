@@ -87,7 +87,7 @@ function check_active_bounds(result3w, math3w)
                       "vmneg" => vmneg_bounds, "vmzero" => vmzero_bounds, "vmpos" => vmpos_bounds, "vuf" => vuf_bounds,
                       "cm" => cm_bounds, "pg" => pg_bounds, "qg" => qg_bounds)
 
-    ### convert dictionaries into a dataframe, with columns as checks, and rows as cases. 
-    ### also store convergence status as a column in the dataframe.
     return df, check_dict
 end
+
+## have upper and lower bounds for checks

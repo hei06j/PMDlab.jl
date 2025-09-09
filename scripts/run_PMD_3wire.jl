@@ -19,8 +19,12 @@ const PMD = PowerModelsDistribution
 PMD.silence!()
 
 ## run optimal power flow IV rectangular
-file = "data/three-wire/network_23/Feeder_3/Master.dss"     # three-wire without transformer  SMALLEST network
+# file = "data/three-wire/network_23/Feeder_3/Master.dss"     # three-wire without transformer  SMALLEST network
 # file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
+
+file = "data/three-wire/network_16/Feeder_2/Master.dss"     # three-wire without transformer  SMALLEST network
+file = "data/three-wire/network_8/Feeder_2/Master.dss"     # three-wire without transformer  SMALLEST network
+# file = "data/three-wire/network_19/Feeder_1/Master.dss"     # three-wire without transformer  SMALLEST network
 
 """ line_current_rating adds thermal rating to lines.
     OPTIONS: true, false """
@@ -32,7 +36,8 @@ reduce_lines = true
 
 """ vsource_model is the model of the voltage source bus.
     OPTIONS: "3vm 3va fix", "3va fix", "va fix", "va fix va diff",  "va fix seq" """
-vsource_model = "va fix va diff"
+# vsource_model = "va fix va diff"
+vsource_model = "3vm 3va fix"
 
 """ source_va_rotation initializes the bus voltages with angles in the specified sequence roration for the reference bus.
     OPTIONS: "pos", "neg", "zero" """
@@ -44,11 +49,11 @@ initialize_rotation = "pos"
 
 """ bus_angle_diff_bounds adds bus voltage angle difference bounds on buses other than the reference bus.
     OPTIONS: true, false """
-bus_angle_diff_bounds = true
+bus_angle_diff_bounds = false
 
 """ Vsequence_bounds adds voltage sequence bounds on buses other than the reference bus.
     OPTIONS: true, false """
-Vsequence_bounds = true
+Vsequence_bounds = false
 
 """ balanced_impedance makes all impedances balanced.
     OPTIONS: true, false """
@@ -80,8 +85,8 @@ What to test:
 """
 ##
 eng3w = parse_file(file, transformations=[transform_loops!])
-PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1)
-math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
+PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=100)
+math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=false)
 PMDlab.augment_math_3wire!(math3w; vsource_model=vsource_model, source_va_rotation=source_va_rotation, bus_angle_diff_bounds=bus_angle_diff_bounds, Vsequence_bounds=Vsequence_bounds, balanced_impedance=balanced_impedance, initialize_rotation=initialize_rotation, cost_multiplier=1000)  # changing some of the input data
 
 
@@ -107,11 +112,44 @@ elseif formulation == "ACP"
 end
 
 
-df, checks = PMDlab.check_active_bounds(result3w, math3w)
+
+## Some basic checks
+
+load_id_bus = [(i, load["load_bus"]) for (i,load) in math3w["load"]]
+load_s_gap = []
+for (i,busid) in load_id_bus
+    load_connections = math3w["load"]["$i"]["connections"]
+
+    load_c = result3w["solution"]["load"]["$i"]["crd_bus"] .+ im * result3w["solution"]["load"]["$i"]["cid_bus"]
+    load_v = result3w["solution"]["bus"]["$busid"]["vr"][load_connections] .+ im * result3w["solution"]["bus"]["$busid"]["vi"][load_connections]
+    load_s0 = result3w["solution"]["load"]["$i"]["pd"] .+ im * result3w["solution"]["load"]["$i"]["qd"]
+    load_s = load_v .* conj(load_c)
+    push!(load_s_gap, load_s .- load_s0)
+end
+maxmax = maximum(max.([maximum(abs.(vec)) for vec in load_s_gap]))
+
+
+gen_id_bus = [(i, gen["gen_bus"]) for (i,gen) in math3w["gen"]]
+gen_s_gap = []
+for (i,busid) in gen_id_bus
+    gen_connections = math3w["gen"]["$i"]["connections"]
+
+    gen_c = result3w["solution"]["gen"]["$i"]["crg_bus"] .+ im * result3w["solution"]["gen"]["$i"]["cig_bus"]
+    gen_v = result3w["solution"]["bus"]["$busid"]["vr"][gen_connections] .+ im * result3w["solution"]["bus"]["$busid"]["vi"][gen_connections]
+    gen_s0 = result3w["solution"]["gen"]["$i"]["pg"] .+ im * result3w["solution"]["gen"]["$i"]["qg"]
+    gen_s = gen_v .* conj(gen_c)
+    push!(gen_s_gap, gen_s .- gen_s0)
+end
+maxmax = maximum(max.([maximum(abs.(vec)) for vec in gen_s_gap]))
+
+
+total_gen = sum(sum(gen["pg"]+im*gen["qg"] for (i,gen) in result3w["solution"]["gen"]))
+total_load = sum(sum(load["pd"]+im*load["qd"] for (i,load) in result3w["solution"]["load"]))
+
+total_losses = total_gen .- total_load
+loss_percent = total_losses / total_gen * 100
 
 ##
-
-
 
 vneqseq = [sqrt(bus["vmnegsqr"]) for (i, bus) in result3w["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
 vposseq = [sqrt(bus["vmpossqr"]) for (i, bus) in result3w["solution"]["bus"] if occursin("source", math3w["bus"]["$i"]["name"])]
