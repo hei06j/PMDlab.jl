@@ -7,7 +7,7 @@ function make_impedances_symmetric!(math)
     end
 end
 
-function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sbase=1)
+function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sbase=1000)
 
     if line_current_rating
         add_linecode_normaps!(eng)           # add branch current limit
@@ -17,7 +17,10 @@ function augment_eng_3wire!(eng; line_current_rating=true, reduce_lines=true, sb
         PMD.reduce_line_series!(eng, remove_original_lines=true)
     end
 
-    eng["settings"]["sbase"] = sbase    # change power base here
+    @assert sbase >= 1e1 "Engineering model sbase_default should be between 1e2 to 1e6 MVA"
+    @assert sbase <= 1e6 "Engineering model sbase_default should be between 1e2 to 1e6 MVA"
+    # eng["settings"]["sbase"] = sbase    # change power base here
+    eng["settings"]["sbase_default"] = sbase    # change power base here
     eng["voltage_source"]["source"]["rs"] *= 0  # remove voltage source internal impedance
     eng["voltage_source"]["source"]["xs"] *= 0  # remove voltage source internal impedance
 
@@ -128,16 +131,21 @@ function augment_math_3wire!(math; vsource_model="3vm 3va fix", source_va_rotati
     end
     
     gen_counter = length(math["gen"])
+    gen1 = copy(math["gen"]["1"])
+    # math["gen"]["1"]["pmin"] .= 0
     for (d, load) in math["load"]
         if mod(load["index"], 4) == 1
             gen_counter += 1
-            math["gen"]["$gen_counter"] = deepcopy(math["gen"]["1"])
+            math["gen"]["$gen_counter"] = deepcopy(gen1)
             math["gen"]["$gen_counter"]["name"] = "$gen_counter"
+            math["gen"]["$gen_counter"]["source_id"] = "$gen_counter"
             math["gen"]["$gen_counter"]["index"] = gen_counter
-            math["gen"]["$gen_counter"]["cost"] = 0.5*math["gen"]["1"]["cost"]
+            math["gen"]["$gen_counter"]["cost"] = 0.5 .* gen1["cost"] .* rand(1)[1]
             math["gen"]["$gen_counter"]["gen_bus"] = load["load_bus"]
-            math["gen"]["$gen_counter"]["pmax"] = 4*ones(3)
-            math["gen"]["$gen_counter"]["pmin"] = 0.0*ones(3)
+            math["gen"]["$gen_counter"]["pmax"] = 4 * ones(3) / math["settings"]["sbase"]
+            math["gen"]["$gen_counter"]["pmin"] = 0.0 * ones(3) / math["settings"]["sbase"]
+            # math["gen"]["$gen_counter"]["qmax"] = 4 * ones(3) / math["settings"]["sbase"]
+            # math["gen"]["$gen_counter"]["qmin"] = 0.0 * ones(3) / math["settings"]["sbase"]
             math["gen"]["$gen_counter"]["connections"] = [1;2;3]
         end
         ### change every 10th load to constant impedance

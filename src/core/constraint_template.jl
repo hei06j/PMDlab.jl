@@ -11,7 +11,7 @@ Imposes suitable constraints for the voltage at the reference bus
 """
 function constraint_mc_voltage_reference(pm::PMD.AbstractUnbalancedPowerModel, id::Int; nw::Int=PMD.nw_id_default, bounded::Bool=true, report::Bool=true)
     bus = PMD.ref(pm, nw, :bus, id)
-    voltage_source_type = bus["voltage_source_type"]
+    voltage_source_type = haskey(bus, "voltage_source_type") ? bus["voltage_source_type"] : "3vm 3va fix"
 
     if voltage_source_type == "3vm 3va fix"
         constraint_mc_3vm3va_fixed(pm, nw, id, bus["vm"], bus["va"])

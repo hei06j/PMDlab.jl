@@ -23,16 +23,16 @@ PMD.silence!()
 # file = "data/three-wire/network_1/Feeder_1/Master.dss"      # three-wire without transformer  LARGER network
 
 file = "data/three-wire/network_16/Feeder_2/Master.dss"     # three-wire without transformer  SMALLEST network
-file = "data/three-wire/network_8/Feeder_2/Master.dss"     # three-wire without transformer  SMALLEST network
+# file = "data/three-wire/network_8/Feeder_2/Master.dss"     # three-wire without transformer  SMALLEST network
 # file = "data/three-wire/network_19/Feeder_1/Master.dss"     # three-wire without transformer  SMALLEST network
 
 """ line_current_rating adds thermal rating to lines.
     OPTIONS: true, false """
-line_current_rating = true
+line_current_rating = false
 
 """ reduce_lines.
     OPTIONS: true, false """
-reduce_lines = true
+reduce_lines = false
 
 """ vsource_model is the model of the voltage source bus.
     OPTIONS: "3vm 3va fix", "3va fix", "va fix", "va fix va diff",  "va fix seq" """
@@ -84,11 +84,13 @@ What to test:
 - optionally test "sbase" (constraint scaling) and "cost_multiplier" (objective scaling)
 """
 ##
+using Random
+Random.seed!(1234)
+
 eng3w = parse_file(file, transformations=[transform_loops!])
-PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=100)
+PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1000)
 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=false)
 PMDlab.augment_math_3wire!(math3w; vsource_model=vsource_model, source_va_rotation=source_va_rotation, bus_angle_diff_bounds=bus_angle_diff_bounds, Vsequence_bounds=Vsequence_bounds, balanced_impedance=balanced_impedance, initialize_rotation=initialize_rotation, cost_multiplier=1000)  # changing some of the input data
-
 
 result3w = []
 if formulation == "IVR"
@@ -111,9 +113,21 @@ elseif formulation == "ACP"
 
 end
 
+result3w
 
 
-## Some basic checks
+# ## Some basic checks
+# result3w_1e6 = deepcopy(result3w)
+# result3w_1e3 = deepcopy(result3w)
+# result3w_1e2 = deepcopy(result3w)
+# result3w_1e1 = deepcopy(result3w)
+
+# using Plots
+# hcat([gen["pg"][2]*1000 for (i,gen) in result3w_1e6["solution"]["gen"]], [gen["pg"][2] for (i,gen) in result3w_1e3["solution"]["gen"]])
+# hcat([gen["pg"][2]*10 for (i,gen) in result3w_1e3["solution"]["gen"]], [gen["pg"][2] for (i,gen) in result3w_1e2["solution"]["gen"]])
+# hcat([gen["pg"][2]*10 for (i,gen) in result3w_1e2["solution"]["gen"]], [gen["pg"][2] for (i,gen) in result3w_1e1["solution"]["gen"]])
+
+##
 
 load_id_bus = [(i, load["load_bus"]) for (i,load) in math3w["load"]]
 load_s_gap = []
@@ -171,7 +185,10 @@ pg = [gen["pg"] for (i,gen) in result3w["solution"]["gen"]]
 ## For all the test cases, the following new constraints are checked:
 ### - negative sequence bound should be binding in some of the testcase
 ### - current limits also should be binding in some of the testcase
-ENWL_3W_EMBD_DIR = "data/three-wire"
+ENWL_3W_EMBD_DIR = "data/three-wire-modified"
+
+using Random
+Random.seed!(1234)
 
 checks_df = DataFrames.DataFrame()
 
@@ -186,7 +203,7 @@ for network_dir in readdir(ENWL_3W_EMBD_DIR)
                 case_dir = "$ENWL_3W_EMBD_DIR/$network_dir/$feeder_dir"
 
                 eng3w = parse_file(case_dir*"/Master.dss", transformations=[transform_loops!])
-                PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1)
+                PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1000)
                 math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=true)
                 PMDlab.augment_math_3wire!(math3w; vsource_model=vsource_model, source_va_rotation=source_va_rotation, bus_angle_diff_bounds=bus_angle_diff_bounds, Vsequence_bounds=Vsequence_bounds, balanced_impedance=balanced_impedance, initialize_rotation=initialize_rotation, cost_multiplier=1000)  # changing some of the input data
                 pm = PMD.instantiate_mc_model(math3w, IVRUPowerModel, PMDlab.build_mc_opf);

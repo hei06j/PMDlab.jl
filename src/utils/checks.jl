@@ -11,12 +11,13 @@ function check_active_bounds(result3w, math3w)
     vmpos_bounds = Dict()
     vuf_bounds = Dict()
     va_pp_bounds = Dict()
+    small_neg2zero(a) = map(x -> x < 0 && isapprox(x, 0; atol=1e-8) ? 0.0 : x, a)
     for (i, bus) in result3w["solution"]["bus"]
         vm_bounds[i] = math3w["bus"][i]["vmin"] .< sqrt.(bus["vr"].^2 .+ bus["vi"].^2) .< math3w["bus"][i]["vmax"]
-        vmneg_bounds[i] = haskey(bus, "vmnegsqr") ? sqrt(bus["vmnegsqr"]) < math3w["bus"][i]["vm_seq_neg_max"] : true
-        vmzero_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(bus["vmzerosqr"]) < math3w["bus"][i]["vm_seq_zero_max"] : true
-        vmpos_bounds[i] = haskey(bus, "vmpossqr") ? sqrt(bus["vmpossqr"]) < math3w["bus"][i]["vm_seq_pos_max"] : true
-        vuf_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(bus["vmnegsqr"]/bus["vmpossqr"]) < math3w["bus"][i]["vm_vuf_max"] : true
+        vmneg_bounds[i] = haskey(bus, "vmnegsqr") ? sqrt(small_neg2zero(bus["vmnegsqr"])) < math3w["bus"][i]["vm_seq_neg_max"] : true
+        vmzero_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(small_neg2zero(bus["vmzerosqr"])) < math3w["bus"][i]["vm_seq_zero_max"] : true
+        vmpos_bounds[i] = haskey(bus, "vmpossqr") ? sqrt(small_neg2zero(bus["vmpossqr"])) < math3w["bus"][i]["vm_seq_pos_max"] : true
+        vuf_bounds[i] = haskey(bus, "vmzerosqr") ? sqrt(small_neg2zero(bus["vmnegsqr"]/bus["vmpossqr"])) < math3w["bus"][i]["vm_vuf_max"] : true
 
         T = [1 -1 0 ; 0 1 -1 ; -1 0 1]
         va_pp_bounds[i] = haskey(math3w["bus"][i], "va_delta") ? -math3w["bus"][i]["va_delta"] .< PMD._wrap_to_180(T * angle.(bus["vr"] .+ im * bus["vi"]) .* 180/pi .- 120)  .< math3w["bus"][i]["va_delta"] : true
