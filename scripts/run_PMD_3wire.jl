@@ -28,11 +28,11 @@ file = "data/three-wire/network_16/Feeder_2/Master.dss"     # three-wire without
 
 """ line_current_rating adds thermal rating to lines.
     OPTIONS: true, false """
-line_current_rating = false
+line_current_rating = true
 
 """ reduce_lines.
     OPTIONS: true, false """
-reduce_lines = false
+reduce_lines = true
 
 """ vsource_model is the model of the voltage source bus.
     OPTIONS: "3vm 3va fix", "3va fix", "va fix", "va fix va diff",  "va fix seq" """
@@ -217,3 +217,34 @@ for network_dir in readdir(ENWL_3W_EMBD_DIR)
 end
 
 CSV.write("IVR_checks.csv", checks_df)
+
+
+##
+ENWL_3W_EMBD_DIR = "data/three-wire-modified"
+ENWL_3W_EMBD_DIR_json = "data/three-wire-modified-json"
+using Random
+Random.seed!(1234)
+
+checks_df = DataFrames.DataFrame()
+
+for network_dir in readdir(ENWL_3W_EMBD_DIR)
+    mn = match(r"network_(\d+)$"i, network_dir)
+    if !isnothing(mn)
+        n = mn.captures[1]
+        for feeder_dir in readdir("$ENWL_3W_EMBD_DIR/$network_dir")
+            mf = match(r"feeder_(\d+)$"i, feeder_dir)
+            if !isnothing(mf)
+                f = mf.captures[1]
+                case_dir = "$ENWL_3W_EMBD_DIR/$network_dir/$feeder_dir"
+
+                eng3w = parse_file(case_dir*"/Master.dss", transformations=[transform_loops!])
+                PMDlab.augment_eng_3wire!(eng3w; line_current_rating=line_current_rating, reduce_lines=reduce_lines, sbase=1000)
+                math3w = transform_data_model(eng3w, kron_reduce=true, phase_project=false)
+                PMDlab.augment_math_3wire!(math3w; vsource_model=vsource_model, source_va_rotation=source_va_rotation, bus_angle_diff_bounds=bus_angle_diff_bounds, Vsequence_bounds=Vsequence_bounds, balanced_impedance=balanced_impedance, initialize_rotation=initialize_rotation, cost_multiplier=1000)  # changing some of the input data
+
+                PMD.print_file(ENWL_3W_EMBD_DIR_json*"/network_$(n)_feeder_$(f)_model_math.json", math3w)
+                PMD.print_file(ENWL_3W_EMBD_DIR_json*"/network_$(n)_feeder_$(f)_model_eng.json", eng3w)
+            end
+        end
+    end
+end

@@ -1,0 +1,928 @@
+{
+  "is_kron_reduced": true,
+  "conductor_ids": [
+    1,
+    2,
+    3
+  ],
+  "time_elapsed": 1.0,
+  "bus": {
+    "4": {
+      "vm_pair_lb": [],
+      "grounded": [
+        false,
+        false,
+        false
+      ],
+      "va_start": [
+        0.0,
+        -2.0943951023931957,
+        2.0943951023931957
+      ],
+      "vm_pair_ub": [],
+      "bus_i": 4,
+      "vr_start": [
+        0.0,
+        -0.8660254037844387,
+        0.8660254037844387
+      ],
+      "name": "56",
+      "bus_type": 1,
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "vmax": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "bus.56",
+      "vmin": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "index": 4,
+      "vm_start": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999999
+      ]
+    },
+    "1": {
+      "vm_pair_lb": [],
+      "grounded": [
+        false,
+        false,
+        false
+      ],
+      "va_start": [
+        0.0,
+        -2.0943951023931957,
+        2.0943951023931957
+      ],
+      "vm_pair_ub": [],
+      "bus_i": 1,
+      "vr_start": [
+        0.0,
+        -0.8660254037844387,
+        0.8660254037844387
+      ],
+      "name": "sourcebus",
+      "bus_type": 3,
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "vmax": [
+        null,
+        null,
+        null
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "bus.sourcebus",
+      "voltage_source_type": "3vm 3va fix",
+      "vmin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "index": 1,
+      "va": [
+        0.0,
+        -2.0943951023931953,
+        2.0943951023931953
+      ],
+      "vm": [
+        1,
+        1,
+        1
+      ],
+      "vm_start": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999999
+      ]
+    },
+    "2": {
+      "vm_pair_lb": [],
+      "grounded": [
+        false,
+        false,
+        false
+      ],
+      "va_start": [
+        0.0,
+        -2.0943951023931957,
+        2.0943951023931957
+      ],
+      "vm_pair_ub": [],
+      "bus_i": 2,
+      "vr_start": [
+        0.0,
+        -0.8660254037844387,
+        0.8660254037844387
+      ],
+      "name": "58",
+      "bus_type": 1,
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "vmax": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "bus.58",
+      "vmin": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "index": 2,
+      "vm_start": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999999
+      ]
+    },
+    "3": {
+      "vm_pair_lb": [],
+      "grounded": [
+        false,
+        false,
+        false
+      ],
+      "va_start": [
+        0.0,
+        -2.0943951023931957,
+        2.0943951023931957
+      ],
+      "vm_pair_ub": [],
+      "bus_i": 3,
+      "vr_start": [
+        0.0,
+        -0.8660254037844387,
+        0.8660254037844387
+      ],
+      "name": "57",
+      "bus_type": 1,
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "vmax": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "bus.57",
+      "vmin": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "index": 3,
+      "vm_start": [
+        1.0,
+        0.9999999999999999,
+        0.9999999999999999
+      ]
+    }
+  },
+  "name": "enwl_network_23_feeder_3_kron",
+  "map": [
+    {
+      "unmap_function": "_map_math2eng_root!"
+    },
+    {
+      "to": "bus.1",
+      "from": "sourcebus",
+      "unmap_function": "_map_math2eng_bus!"
+    },
+    {
+      "to": "bus.2",
+      "from": "58",
+      "unmap_function": "_map_math2eng_bus!"
+    },
+    {
+      "to": "bus.3",
+      "from": "57",
+      "unmap_function": "_map_math2eng_bus!"
+    },
+    {
+      "to": "bus.4",
+      "from": "56",
+      "unmap_function": "_map_math2eng_bus!"
+    },
+    {
+      "to": "branch.1",
+      "from": "_virtual.line48+line5+line2+line8+line31+line33+line46+line13+line24+line9+line55+line38+line47+line6+line15+line39+line28+line37+line50+line26+line14+line27+line10+line32+line53+line45+line4+line21+line20+line36+line0+line16+line11+line35+line54+line7+line18+line22+line51+line44+line19+line29+line12+line42+line34+line40+line52+line25+line3+line43+line23+line49+line17+line41+line1+line30",
+      "unmap_function": "_map_math2eng_line!"
+    },
+    {
+      "to": "branch.2",
+      "from": "line56",
+      "unmap_function": "_map_math2eng_line!"
+    },
+    {
+      "to": "branch.3",
+      "from": "line57",
+      "unmap_function": "_map_math2eng_line!"
+    },
+    {
+      "to": "load.1",
+      "from": "load2",
+      "unmap_function": "_map_math2eng_load!"
+    },
+    {
+      "to": "load.2",
+      "from": "load1",
+      "unmap_function": "_map_math2eng_load!"
+    },
+    {
+      "to": "gen.1",
+      "from": "source",
+      "unmap_function": "_map_math2eng_voltage_source!"
+    }
+  ],
+  "settings": {
+    "sbase_default": 1000,
+    "vbases_default": {
+      "1": 0.24017771198288432
+    },
+    "voltage_scale_factor": 1000.0,
+    "sbase": 1000,
+    "power_scale_factor": 1000.0,
+    "base_frequency": 50.0
+  },
+  "gen": {
+    "1": {
+      "pg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "model": 2,
+      "connections": [
+        1,
+        2,
+        3
+      ],
+      "shutdown": 0.0,
+      "startup": 0.0,
+      "configuration": "WYE",
+      "name": "_virtual_gen.voltage_source.source",
+      "qg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gen_bus": 1,
+      "pmax": [
+        null,
+        null,
+        null
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "voltage_source.source",
+      "vg": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "index": 1,
+      "cost": [
+        1000.0,
+        0.0
+      ],
+      "gen_status": 1,
+      "qmax": [
+        null,
+        null,
+        null
+      ],
+      "qmin": [
+        null,
+        null,
+        null
+      ],
+      "control_mode": 1,
+      "pmin": [
+        null,
+        null,
+        null
+      ],
+      "ncost": 2
+    },
+    "2": {
+      "pg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "model": 2,
+      "connections": [
+        1,
+        2,
+        3
+      ],
+      "shutdown": 0.0,
+      "startup": 0.0,
+      "configuration": "WYE",
+      "name": "2",
+      "qg": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gen_bus": 2,
+      "pmax": [
+        0.004,
+        0.004,
+        0.004
+      ],
+      "vbase": 0.24017771198288432,
+      "source_id": "2",
+      "vg": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "index": 2,
+      "cost": [
+        233.27772571905004,
+        0.0
+      ],
+      "gen_status": 1,
+      "qmax": [
+        null,
+        null,
+        null
+      ],
+      "qmin": [
+        null,
+        null,
+        null
+      ],
+      "control_mode": 1,
+      "pmin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ncost": 2
+    }
+  },
+  "branch": {
+    "1": {
+      "br_r": [
+        [
+          0.2665611451108484,
+          0.11415601138167751,
+          0.10824812424847081
+        ],
+        [
+          0.11415601138167751,
+          0.27321176373094236,
+          0.11415594471299877
+        ],
+        [
+          0.10824812424847081,
+          0.11415594471299877,
+          0.2665615241373259
+        ]
+      ],
+      "rate_a": [
+        null,
+        null,
+        null
+      ],
+      "f_connections": [
+        1,
+        2,
+        3
+      ],
+      "rate_b": [
+        null,
+        null,
+        null
+      ],
+      "name": "_virtual.line48+line5+line2+line8+line31+line33+line46+line13+line24+line9+line55+line38+line47+line6+line15+line39+line28+line37+line50+line26+line14+line27+line10+line32+line53+line45+line4+line21+line20+line36+line0+line16+line11+line35+line54+line7+line18+line22+line51+line44+line19+line29+line12+line42+line34+line40+line52+line25+line3+line43+line23+line49+line17+line41+line1+line30",
+      "br_x": [
+        [
+          0.12354591536740071,
+          0.0715032025216019,
+          0.02089866256238177
+        ],
+        [
+          0.0715032025216019,
+          0.16474061499345713,
+          0.07150322429668397
+        ],
+        [
+          0.02089866256238177,
+          0.07150322429668397,
+          0.1235452067403617
+        ]
+      ],
+      "rate_c": [
+        null,
+        null,
+        null
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_a": [
+        null,
+        null,
+        null
+      ],
+      "vbase": 0.24017771198288432,
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "source_id": "line._virtual.line48+line5+line2+line8+line31+line33+line46+line13+line24+line9+line55+line38+line47+line6+line15+line39+line28+line37+line50+line26+line14+line27+line10+line32+line53+line45+line4+line21+line20+line36+line0+line16+line11+line35+line54+line7+line18+line22+line51+line44+line19+line29+line12+line42+line34+line40+line52+line25+line3+line43+line23+line49+line17+line41+line1+line30",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": 4,
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_b": [
+        null,
+        null,
+        null
+      ],
+      "br_status": 1,
+      "t_bus": 1,
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "index": 1,
+      "angmin": [
+        -1.0471975511965976,
+        -1.0471975511965976,
+        -1.0471975511965976
+      ],
+      "angmax": [
+        1.0471975511965976,
+        1.0471975511965976,
+        1.0471975511965976
+      ],
+      "c_rating_c": [
+        null,
+        null,
+        null
+      ]
+    },
+    "2": {
+      "br_r": [
+        [
+          0.5283852387258299,
+          0.12295022895932264,
+          0.12560571466101733
+        ],
+        [
+          0.12295022895932264,
+          0.5230582623053054,
+          0.1229461900863107
+        ],
+        [
+          0.12560571466101733,
+          0.1229461900863107,
+          0.5283769712437009
+        ]
+      ],
+      "rate_a": [
+        null,
+        null,
+        null
+      ],
+      "f_connections": [
+        1,
+        2,
+        3
+      ],
+      "rate_b": [
+        null,
+        null,
+        null
+      ],
+      "name": "line56",
+      "br_x": [
+        [
+          0.1687417746079018,
+          0.1435885676968853,
+          0.13238462538258447
+        ],
+        [
+          0.1435885676968853,
+          0.17431581903640403,
+          0.14358252723102485
+        ],
+        [
+          0.13238462538258447,
+          0.14358252723102485,
+          0.1687302300970758
+        ]
+      ],
+      "rate_c": [
+        null,
+        null,
+        null
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_a": [
+        0.018013328398716322,
+        0.018013328398716322,
+        0.018013328398716322
+      ],
+      "vbase": 0.24017771198288432,
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "source_id": "line.line56",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": 4,
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_b": [
+        null,
+        null,
+        null
+      ],
+      "br_status": 1,
+      "t_bus": 3,
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "index": 2,
+      "angmin": [
+        -1.0471975511965976,
+        -1.0471975511965976,
+        -1.0471975511965976
+      ],
+      "angmax": [
+        1.0471975511965976,
+        1.0471975511965976,
+        1.0471975511965976
+      ],
+      "c_rating_c": [
+        null,
+        null,
+        null
+      ]
+    },
+    "3": {
+      "br_r": [
+        [
+          0.5283852387258299,
+          0.12295022895932264,
+          0.12560571466101733
+        ],
+        [
+          0.12295022895932264,
+          0.5230582623053054,
+          0.1229461900863107
+        ],
+        [
+          0.12560571466101733,
+          0.1229461900863107,
+          0.5283769712437009
+        ]
+      ],
+      "rate_a": [
+        null,
+        null,
+        null
+      ],
+      "f_connections": [
+        1,
+        2,
+        3
+      ],
+      "rate_b": [
+        null,
+        null,
+        null
+      ],
+      "name": "line57",
+      "br_x": [
+        [
+          0.1687417746079018,
+          0.1435885676968853,
+          0.13238462538258447
+        ],
+        [
+          0.1435885676968853,
+          0.17431581903640403,
+          0.14358252723102485
+        ],
+        [
+          0.13238462538258447,
+          0.14358252723102485,
+          0.1687302300970758
+        ]
+      ],
+      "rate_c": [
+        null,
+        null,
+        null
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_a": [
+        0.018013328398716322,
+        0.018013328398716322,
+        0.018013328398716322
+      ],
+      "vbase": 0.24017771198288432,
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "source_id": "line.line57",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": 4,
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "c_rating_b": [
+        null,
+        null,
+        null
+      ],
+      "br_status": 1,
+      "t_bus": 2,
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "index": 3,
+      "angmin": [
+        -1.0471975511965976,
+        -1.0471975511965976,
+        -1.0471975511965976
+      ],
+      "angmax": [
+        1.0471975511965976,
+        1.0471975511965976,
+        1.0471975511965976
+      ],
+      "c_rating_c": [
+        null,
+        null,
+        null
+      ]
+    }
+  },
+  "storage": {},
+  "switch": {},
+  "is_projected": true,
+  "per_unit": true,
+  "data_model": "MATHEMATICAL",
+  "shunt": {},
+  "transformer": {},
+  "bus_lookup": {
+    "sourcebus": 1,
+    "58": 2,
+    "57": 3,
+    "56": 4
+  },
+  "load": {
+    "1": {
+      "model": "IMPEDANCE",
+      "connections": [
+        2
+      ],
+      "configuration": "WYE",
+      "name": "load2",
+      "status": 1,
+      "qd": [
+        0.00010057733618473213
+      ],
+      "vbase": 0.24017771198288432,
+      "vnom_kv": 0.9576242445693314,
+      "source_id": "load.load2",
+      "load_bus": 2,
+      "dispatchable": 0,
+      "index": 1,
+      "pd": [
+        0.000306
+      ]
+    },
+    "2": {
+      "model": "POWER",
+      "connections": [
+        1
+      ],
+      "configuration": "WYE",
+      "name": "load1",
+      "status": 1,
+      "qd": [
+        0.0006468503189920028
+      ],
+      "vbase": 0.24017771198288432,
+      "vnom_kv": 0.9576242445693314,
+      "source_id": "load.load1",
+      "load_bus": 3,
+      "dispatchable": 0,
+      "index": 2,
+      "pd": [
+        0.001968
+      ]
+    }
+  }
+}

@@ -1,0 +1,6168 @@
+{
+  "voltage_source": {
+    "source": {
+      "source_id": "vsource.source",
+      "rs": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "va": [
+        0.0,
+        -119.99999999999999,
+        120.00000000000001,
+        0.0
+      ],
+      "status": "ENABLED",
+      "connections": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "vm": [
+        0.24017771198288432,
+        0.24017771198288432,
+        0.24017771198288432,
+        0.0
+      ],
+      "xs": [
+        [
+          0.0,
+          -0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          0.0,
+          -0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          0.0,
+          -0.0
+        ],
+        [
+          -0.0,
+          -0.0,
+          -0.0,
+          0.0
+        ]
+      ],
+      "bus": "sourcebus",
+      "configuration": "WYE"
+    }
+  },
+  "name": "enwl_network_18_feeder_3_kron",
+  "line": {
+    "_virtual.line354+line377+line366": {
+      "source_id": "line._virtual.line354+line377+line366",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "344",
+      "length": 18.281100000000002,
+      "status": "ENABLED",
+      "t_bus": "378",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1263+line1271": {
+      "source_id": "line._virtual.line1263+line1271",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1272",
+      "length": 0.203749,
+      "status": "ENABLED",
+      "t_bus": "1257",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line527+line478+line370+line578+line348+line418+line393+line494+line561+line594+line544+line447+line326+line462+line433+line510+line405+line337+line381+line359": {
+      "source_id": "line._virtual.line527+line478+line370+line578+line348+line418+line393+line494+line561+line594+line544+line447+line326+line462+line433+line510+line405+line337+line381+line359",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "317",
+      "length": 12.161499,
+      "status": "ENABLED",
+      "t_bus": "595",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line843+line669+line815+line713+line606+line800+line590+line951+line885+line757+line683+line960+line898+line786+line871+line911+line933+line743+line622+line639+line655+line922+line573+line728+line771+line697+line857+line829+line942": {
+      "source_id": "line._virtual.line843+line669+line815+line713+line606+line800+line590+line951+line885+line757+line683+line960+line898+line786+line871+line911+line933+line743+line622+line639+line655+line922+line573+line728+line771+line697+line857+line829+line942",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "557",
+      "length": 8.693461000000003,
+      "status": "ENABLED",
+      "t_bus": "961",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line707+line810+line738+line795+line752+line766+line723+line780": {
+      "source_id": "line._virtual.line707+line810+line738+line795+line752+line766+line723+line780",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "693",
+      "length": 29.228500000000004,
+      "status": "ENABLED",
+      "t_bus": "811",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line722+line706": {
+      "source_id": "line._virtual.line722+line706",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "693",
+      "length": 7.9033,
+      "status": "ENABLED",
+      "t_bus": "723",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1179+line1166+line1138+line1193+line1162+line1154+line1146+line1183+line1133+line1188+line1142+line1197+line1170+line1158+line1150+line1174": {
+      "source_id": "line._virtual.line1179+line1166+line1138+line1193+line1162+line1154+line1146+line1183+line1133+line1188+line1142+line1197+line1170+line1158+line1150+line1174",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1198",
+      "length": 26.670299999999997,
+      "status": "ENABLED",
+      "t_bus": "1129",
+      "linecode": "lc9",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line122": {
+      "length": 0.24947,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "120",
+      "source_id": "line.line122",
+      "status": "ENABLED",
+      "t_bus": "123",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line423": {
+      "length": 1.1738,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "410",
+      "source_id": "line.line423",
+      "status": "ENABLED",
+      "t_bus": "424",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line302+line317+line309+line328": {
+      "source_id": "line._virtual.line302+line317+line309+line328",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "329",
+      "length": 9.438200000000002,
+      "status": "ENABLED",
+      "t_bus": "296",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line543+line368+line609+line445+line508+line671+line391+line657+line431+line346+line577+line625+line379+line685+line460+line593+line476+line492+line403+line642+line416+line357+line324+line560+line525+line335": {
+      "source_id": "line._virtual.line543+line368+line609+line445+line508+line671+line391+line657+line431+line346+line577+line625+line379+line685+line460+line593+line476+line492+line403+line642+line416+line357+line324+line560+line525+line335",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "315",
+      "length": 10.241992000000002,
+      "status": "ENABLED",
+      "t_bus": "686",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line329+line340+line371+line406+line361+line394+line382+line448+line318+line434+line310+line495+line419+line350+line463+line479": {
+      "source_id": "line._virtual.line329+line340+line371+line406+line361+line394+line382+line448+line318+line434+line310+line495+line419+line350+line463+line479",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "496",
+      "length": 5.005942000000001,
+      "status": "ENABLED",
+      "t_bus": "304",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line280+line275+line290+line295+line285+line271+line267": {
+      "source_id": "line._virtual.line280+line275+line290+line295+line285+line271+line267",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "264",
+      "length": 11.813600000000001,
+      "status": "ENABLED",
+      "t_bus": "296",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1050+line1135+line1044+line979+line1130+line1073+line1126+line1002+line963+line1008+line1107+line1038+line1080+line1114+line1095+line954+line1098+line1026+line1014+line1091+line1065+line1101+line995+line1032+line1111+line1087+line987+line1118+line1104+line1020+line1057+line971+line1122": {
+      "source_id": "line._virtual.line1050+line1135+line1044+line979+line1130+line1073+line1126+line1002+line963+line1008+line1107+line1038+line1080+line1114+line1095+line954+line1098+line1026+line1014+line1091+line1065+line1101+line995+line1032+line1111+line1087+line987+line1118+line1104+line1020+line1057+line971+line1122",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "946",
+      "length": 21.741912,
+      "status": "ENABLED",
+      "t_bus": "1136",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1054": {
+      "length": 2.9923,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1048",
+      "source_id": "line.line1054",
+      "status": "ENABLED",
+      "t_bus": "1055",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1264": {
+      "length": 6.6699,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1257",
+      "source_id": "line.line1264",
+      "status": "ENABLED",
+      "t_bus": "1265",
+      "linecode": "lc9",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line353+line365": {
+      "source_id": "line._virtual.line353+line365",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "344",
+      "length": 13.0678,
+      "status": "ENABLED",
+      "t_bus": "366",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line251+line222+line239+line231+line247+line255+line235+line243+line258+line227": {
+      "source_id": "line._virtual.line251+line222+line239+line231+line247+line255+line235+line243+line258+line227",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "219",
+      "length": 9.110356,
+      "status": "ENABLED",
+      "t_bus": "259",
+      "linecode": "lc5",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line410": {
+      "length": 2.6449,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "398",
+      "source_id": "line.line410",
+      "status": "ENABLED",
+      "t_bus": "411",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line137+line217+line133+line181+line193+line205+line145+line169+line226+line141+line197+line213+line157+line189+line185+line230+line221+line260+line242+line165+line209+line257+line177+line173+line161+line238+line201+line250+line153+line123+line246+line128+line254+line234+line149": {
+      "source_id": "line._virtual.line137+line217+line133+line181+line193+line205+line145+line169+line226+line141+line197+line213+line157+line189+line185+line230+line221+line260+line242+line165+line209+line257+line177+line173+line161+line238+line201+line250+line153+line123+line246+line128+line254+line234+line149",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "261",
+      "length": 26.621582999999998,
+      "status": "ENABLED",
+      "t_bus": "120",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line264+line286+line261+line303+line281+line268+line272+line296+line291+line276": {
+      "source_id": "line._virtual.line264+line286+line261+line303+line281+line268+line272+line296+line291+line276",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "259",
+      "length": 8.977630000000001,
+      "status": "ENABLED",
+      "t_bus": "304",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line600+line584": {
+      "source_id": "line._virtual.line600+line584",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "601",
+      "length": 12.1325,
+      "status": "ENABLED",
+      "t_bus": "569",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line321+line298+line313+line332+line305+line343": {
+      "source_id": "line._virtual.line321+line298+line313+line332+line305+line343",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "294",
+      "length": 24.658870999999998,
+      "status": "ENABLED",
+      "t_bus": "344",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line861+line1007+line1100+line875+line1043+line1019+line1037+line994+line935+line962+line914+line1086+line1079+line1025+line1013+line925+line944+line1106+line1031+line847+line978+line1090+line1094+line1072+line901+line1097+line1103+line970+line1056+line986+line953+line1049+line888+line1001+line1064": {
+      "source_id": "line._virtual.line861+line1007+line1100+line875+line1043+line1019+line1037+line994+line935+line962+line914+line1086+line1079+line1025+line1013+line925+line944+line1106+line1031+line847+line978+line1090+line1094+line1072+line901+line1097+line1103+line970+line1056+line986+line953+line1049+line888+line1001+line1064",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "834",
+      "length": 16.32894,
+      "status": "ENABLED",
+      "t_bus": "1107",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line617+line585+line601": {
+      "source_id": "line._virtual.line617+line585+line601",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "569",
+      "length": 12.509500000000001,
+      "status": "ENABLED",
+      "t_bus": "618",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line924": {
+      "length": 1.9229,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "913",
+      "source_id": "line.line924",
+      "status": "ENABLED",
+      "t_bus": "925",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line452": {
+      "length": 3.6455,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "438",
+      "source_id": "line.line452",
+      "status": "ENABLED",
+      "t_bus": "453",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1060+line1053": {
+      "source_id": "line._virtual.line1060+line1053",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1061",
+      "length": 3.0759,
+      "status": "ENABLED",
+      "t_bus": "1048",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1181+line1185+line1177": {
+      "source_id": "line._virtual.line1181+line1185+line1177",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1186",
+      "length": 3.12574,
+      "status": "ENABLED",
+      "t_bus": "1174",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1212+line1207+line1220+line1216+line1228+line1224+line1202+line1232": {
+      "source_id": "line._virtual.line1212+line1207+line1220+line1216+line1228+line1224+line1202+line1232",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1233",
+      "length": 5.21092,
+      "status": "ENABLED",
+      "t_bus": "1198",
+      "linecode": "lc9",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line712": {
+      "length": 2.5647,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "697",
+      "source_id": "line.line712",
+      "status": "ENABLED",
+      "t_bus": "713",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line99+line103+line93+line95+line101+line97+line87+line91+line89": {
+      "source_id": "line._virtual.line99+line103+line93+line95+line101+line97+line87+line91+line89",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "104",
+      "length": 11.127939999999999,
+      "status": "ENABLED",
+      "t_bus": "86",
+      "linecode": "lc5",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1124+line1128+line1120+line1116": {
+      "source_id": "line._virtual.line1124+line1128+line1120+line1116",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1129",
+      "length": 13.4478,
+      "status": "ENABLED",
+      "t_bus": "1113",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1093+line1084+line1089": {
+      "source_id": "line._virtual.line1093+line1084+line1089",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1079",
+      "length": 8.58321,
+      "status": "ENABLED",
+      "t_bus": "1094",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line715+line773+line745+line817+line831+line845+line802+line913+line859+line788+line699+line887+line873+line900+line730+line759": {
+      "source_id": "line._virtual.line715+line773+line745+line817+line831+line845+line802+line913+line859+line788+line699+line887+line873+line900+line730+line759",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "914",
+      "length": 6.020619,
+      "status": "ENABLED",
+      "t_bus": "686",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line852+line838+line880+line824+line866": {
+      "source_id": "line._virtual.line852+line838+line880+line824+line866",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "881",
+      "length": 19.555100000000003,
+      "status": "ENABLED",
+      "t_bus": "811",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line731+line746": {
+      "source_id": "line._virtual.line731+line746",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "717",
+      "length": 1.93184,
+      "status": "ENABLED",
+      "t_bus": "747",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1426+line1451+line1430+line1439+line1448+line1436+line1433+line1442+line1445": {
+      "source_id": "line._virtual.line1426+line1451+line1430+line1439+line1448+line1436+line1433+line1442+line1445",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1424",
+      "length": 5.851592999999999,
+      "status": "ENABLED",
+      "t_bus": "1452",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line646+line629+line689+line675+line661": {
+      "source_id": "line._virtual.line646+line629+line689+line675+line661",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "615",
+      "length": 11.8103,
+      "status": "ENABLED",
+      "t_bus": "690",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line278+line288+line293+line283": {
+      "source_id": "line._virtual.line278+line288+line293+line283",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "275",
+      "length": 21.42629,
+      "status": "ENABLED",
+      "t_bus": "294",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1457+line1482+line1480+line1461+line1483+line1479+line1484+line1467+line1487+line1473+line1477+line1478+line1465+line1469+line1475+line1459+line1481+line1489+line1485+line1488+line1454+line1463+line1471+line1486": {
+      "source_id": "line._virtual.line1457+line1482+line1480+line1461+line1483+line1479+line1484+line1467+line1487+line1473+line1477+line1478+line1465+line1469+line1475+line1459+line1481+line1489+line1485+line1488+line1454+line1463+line1471+line1486",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1453",
+      "length": 9.797141000000002,
+      "status": "ENABLED",
+      "t_bus": "1490",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line809+line779+line765+line751+line794+line736": {
+      "source_id": "line._virtual.line809+line779+line765+line751+line794+line736",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "723",
+      "length": 8.8391,
+      "status": "ENABLED",
+      "t_bus": "810",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line614": {
+      "length": 2.031,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "599",
+      "source_id": "line.line614",
+      "status": "ENABLED",
+      "t_bus": "615",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1331+line1408+line1393+line1423+line1351+line1359+line1411+line1414+line1276+line1254+line1346+line1291+line1316+line1420+line1286+line1261+line1269+line1296+line1405+line1372+line1306+line1399+line1384+line1375+line1301+line1369+line1402+line1247+line1381+line1281+line1387+line1417+line1355+line1363+line1396+line1311+line1336+line1378+line1321+line1390+line1326+line1366+line1341": {
+      "source_id": "line._virtual.line1331+line1408+line1393+line1423+line1351+line1359+line1411+line1414+line1276+line1254+line1346+line1291+line1316+line1420+line1286+line1261+line1269+line1296+line1405+line1372+line1306+line1399+line1384+line1375+line1301+line1369+line1402+line1247+line1381+line1281+line1387+line1417+line1355+line1363+line1396+line1311+line1336+line1378+line1321+line1390+line1326+line1366+line1341",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1242",
+      "length": 19.38313,
+      "status": "ENABLED",
+      "t_bus": "1424",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1268+line1246+line1253+line1260+line1275": {
+      "source_id": "line._virtual.line1268+line1246+line1253+line1260+line1275",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1276",
+      "length": 0.7556250000000001,
+      "status": "ENABLED",
+      "t_bus": "1242",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line429+line523+line506+line474+line414+line541+line389+line401+line490+line443+line458": {
+      "source_id": "line._virtual.line429+line523+line506+line474+line414+line541+line389+line401+line490+line443+line458",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "378",
+      "length": 2.86087,
+      "status": "ENABLED",
+      "t_bus": "542",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line559": {
+      "length": 1.4188,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "543",
+      "source_id": "line.line559",
+      "status": "ENABLED",
+      "t_bus": "560",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line889+line926+line902+line876+line915+line936+line945+line862+line848": {
+      "source_id": "line._virtual.line889+line926+line902+line876+line915+line936+line945+line862+line848",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "946",
+      "length": 9.431140000000003,
+      "status": "ENABLED",
+      "t_bus": "834",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line94+line104+line110+line92+line107+line116+line86+line100+line102+line98+line119+line88+line113+line90+line96": {
+      "source_id": "line._virtual.line94+line104+line110+line92+line107+line116+line86+line100+line102+line98+line119+line88+line113+line90+line96",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "86",
+      "length": 15.331519999999998,
+      "status": "ENABLED",
+      "t_bus": "120",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line553+line587+line619+line680+line930+line709+line768+line782+line454+line740+line754+line666+line570+line940+line486+line439+line694+line826+line949+line895+line882+line908+line518+line868+line725+line797+line636+line424+line854+line536+line470+line840+line652+line502+line812+line603+line919": {
+      "source_id": "line._virtual.line553+line587+line619+line680+line930+line709+line768+line782+line454+line740+line754+line666+line570+line940+line486+line439+line694+line826+line949+line895+line882+line908+line518+line868+line725+line797+line636+line424+line854+line536+line470+line840+line652+line502+line812+line603+line919",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "411",
+      "length": 14.481496000000002,
+      "status": "ENABLED",
+      "t_bus": "950",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1085": {
+      "length": 4.532,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1079",
+      "source_id": "line.line1085",
+      "status": "ENABLED",
+      "t_bus": "1086",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1061+line1070+line1077": {
+      "source_id": "line._virtual.line1061+line1070+line1077",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1055",
+      "length": 12.7756,
+      "status": "ENABLED",
+      "t_bus": "1078",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1069": {
+      "length": 3.656,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1061",
+      "source_id": "line.line1069",
+      "status": "ENABLED",
+      "t_bus": "1070",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line48+line8+line75+line73+line24+line72+line64+line38+line6+line15+line28+line26+line81+line76+line27+line45+line0+line11+line36+line67+line84+line18+line22+line29+line42+line40+line52+line56+line3+line65+line43+line77+line80+line62+line41+line1+line58+line30+line79+line66+line60+line5+line2+line83+line31+line33+line13+line46+line9+line55+line47+line39+line70+line37+line50+line14+line78+line10+line32+line53+line4+line82+line21+line69+line16+line20+line35+line54+line7+line74+line51+line44+line63+line85+line59+line19+line71+line12+line61+line34+line25+line23+line49+line57+line17+line68": {
+      "source_id": "line._virtual.line48+line8+line75+line73+line24+line72+line64+line38+line6+line15+line28+line26+line81+line76+line27+line45+line0+line11+line36+line67+line84+line18+line22+line29+line42+line40+line52+line56+line3+line65+line43+line77+line80+line62+line41+line1+line58+line30+line79+line66+line60+line5+line2+line83+line31+line33+line13+line46+line9+line55+line47+line39+line70+line37+line50+line14+line78+line10+line32+line53+line4+line82+line21+line69+line16+line20+line35+line54+line7+line74+line51+line44+line63+line85+line59+line19+line71+line12+line61+line34+line25+line23+line49+line57+line17+line68",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "86",
+      "length": 114.54831100000004,
+      "status": "ENABLED",
+      "t_bus": "sourcebus",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line248+line236+line259+line232+line223+line263+line240+line252+line256+line244+line228": {
+      "xs": [
+        [
+          0.00017936789588216074,
+          0.0001284182810131267,
+          8.758499881917724e-5
+        ],
+        [
+          0.00012841828101312674,
+          0.00021252732723750368,
+          0.00012844137941501373
+        ],
+        [
+          8.758499881917724e-5,
+          0.00012844137941501373,
+          0.00017942218428268155
+        ]
+      ],
+      "f_connections": [
+        1,
+        2,
+        3
+      ],
+      "length": 18.76533,
+      "status": "ENABLED",
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "source_id": "line._virtual.line248+line236+line259+line232+line223+line263+line240+line252+line256+line244+line228",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "264",
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "t_bus": "219",
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.0005047221643153642,
+          0.0001920566962261097,
+          0.0001949819422623367
+        ],
+        [
+          0.00019205669622610972,
+          0.0004972034951834542,
+          0.00019209161648000257
+        ],
+        [
+          0.0001949819422623367,
+          0.00019209161648000257,
+          0.0005047941240234482
+        ]
+      ]
+    },
+    "_virtual.line599+line632+line704+line616+line808+line662+line648+line749+line822+line793+line567+line550+line676+line778+line583+line719+line764+line690+line836+line533+line734": {
+      "source_id": "line._virtual.line599+line632+line704+line616+line808+line662+line648+line749+line822+line793+line567+line550+line676+line778+line583+line719+line764+line690+line836+line533+line734",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "517",
+      "length": 2.111784,
+      "status": "ENABLED",
+      "t_bus": "837",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line558+line641+line608+line624+line592+line576": {
+      "source_id": "line._virtual.line558+line641+line608+line624+line592+line576",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "642",
+      "length": 6.86146,
+      "status": "ENABLED",
+      "t_bus": "543",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line473+line505+line413+line388+line400+line489+line442+line428+line457": {
+      "source_id": "line._virtual.line473+line505+line413+line388+line400+line489+line442+line428+line457",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "506",
+      "length": 8.06617,
+      "status": "ENABLED",
+      "t_bus": "378",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line735+line720+line750": {
+      "source_id": "line._virtual.line735+line720+line750",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "751",
+      "length": 7.373429999999999,
+      "status": "ENABLED",
+      "t_bus": "706",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1068+line1083+line1076": {
+      "source_id": "line._virtual.line1068+line1083+line1076",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1084",
+      "length": 10.4876,
+      "status": "ENABLED",
+      "t_bus": "1061",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line356+line334+line345+line323": {
+      "source_id": "line._virtual.line356+line334+line345+line323",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "357",
+      "length": 11.511650000000001,
+      "status": "ENABLED",
+      "t_bus": "315",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line700": {
+      "length": 3.3946,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "686",
+      "source_id": "line.line700",
+      "status": "ENABLED",
+      "t_bus": "701",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1352+line1452+line1403+line1248+line1317+line1287+line1412+line1428+line1376+line1312+line1440+line1388+line1400+line1332+line1434+line1397+line1424+line1327+line1379+line1373+line1277+line1292+line1342+line1367+line1370+line1262+line1415+line1443+line1437+line1406+line1385+line1270+line1446+line1409+line1307+line1391+line1255+line1394+line1282+line1382+line1337+line1431+line1421+line1449+line1364+line1418+line1347+line1302+line1297+line1360+line1356+line1322": {
+      "source_id": "line._virtual.line1352+line1452+line1403+line1248+line1317+line1287+line1412+line1428+line1376+line1312+line1440+line1388+line1400+line1332+line1434+line1397+line1424+line1327+line1379+line1373+line1277+line1292+line1342+line1367+line1370+line1262+line1415+line1443+line1437+line1406+line1385+line1270+line1446+line1409+line1307+line1391+line1255+line1394+line1282+line1382+line1337+line1431+line1421+line1449+line1364+line1418+line1347+line1302+line1297+line1360+line1356+line1322",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1242",
+      "length": 21.527798,
+      "status": "ENABLED",
+      "t_bus": "1453",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line737": {
+      "length": 4.955,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "723",
+      "source_id": "line.line737",
+      "status": "ENABLED",
+      "t_bus": "738",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line565+line514+line531+line467+line483+line548+line499": {
+      "source_id": "line._virtual.line565+line514+line531+line467+line483+line548+line499",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "453",
+      "length": 2.28873,
+      "status": "ENABLED",
+      "t_bus": "566",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line664+line692+line650+line634+line678": {
+      "source_id": "line._virtual.line664+line692+line650+line634+line678",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "693",
+      "length": 12.122,
+      "status": "ENABLED",
+      "t_bus": "618",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line807": {
+      "length": 1.7959,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "793",
+      "source_id": "line.line807",
+      "status": "ENABLED",
+      "t_bus": "808",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line120+line174+line182+line105+line142+line186+line206+line166+line202+line194+line190+line134+line218+line108+line124+line117+line146+line198+line210+line178+line154+line150+line111+line158+line129+line170+line138+line114+line214+line162": {
+      "source_id": "line._virtual.line120+line174+line182+line105+line142+line186+line206+line166+line202+line194+line190+line134+line218+line108+line124+line117+line146+line198+line210+line178+line154+line150+line111+line158+line129+line170+line138+line114+line214+line162",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "219",
+      "length": 48.972677,
+      "status": "ENABLED",
+      "t_bus": "104",
+      "linecode": "lc5",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line287+line282+line269+line262+line297+line304+line320+line342+line265+line277+line312+line292+line273+line352+line331": {
+      "source_id": "line._virtual.line287+line282+line269+line262+line297+line304+line320+line342+line265+line277+line312+line292+line273+line352+line331",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "259",
+      "length": 20.144419999999997,
+      "status": "ENABLED",
+      "t_bus": "353",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line718+line612+line628+line645+line703+line660+line674+line688": {
+      "source_id": "line._virtual.line718+line612+line628+line645+line703+line660+line674+line688",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "719",
+      "length": 8.447327999999999,
+      "status": "ENABLED",
+      "t_bus": "598",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1182+line1178": {
+      "source_id": "line._virtual.line1182+line1178",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1183",
+      "length": 2.88937,
+      "status": "ENABLED",
+      "t_bus": "1174",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1110": {
+      "length": 2.245,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1107",
+      "source_id": "line.line1110",
+      "status": "ENABLED",
+      "t_bus": "1111",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line990": {
+      "length": 3.6553,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "982",
+      "source_id": "line.line990",
+      "status": "ENABLED",
+      "t_bus": "991",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line747+line732+line834+line820+line762+line849+line965+line890+line937+line916+line981+line903+line805+line956+line973+line791+line863+line946+line877+line776+line927": {
+      "source_id": "line._virtual.line747+line732+line834+line820+line762+line849+line965+line890+line937+line916+line981+line903+line805+line956+line973+line791+line863+line946+line877+line776+line927",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "982",
+      "length": 15.789330000000001,
+      "status": "ENABLED",
+      "t_bus": "717",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1362+line1416+line1310+line1392+line1235+line1227+line1240+line1441+line1295+line1325+line1274+line1429+line1267+line1377+line1215+line1383+line1290+line1371+line1453+line1450+line1315+line1462+line1320+line1358+line1386+line1389+line1474+line1259+line1305+line1300+line1365+line1438+line1407+line1460+line1354+line1211+line1223+line1472+line1458+line1425+line1413+line1206+line1201+line1374+line1435+line1345+line1432+line1252+line1422+line1280+line1330+line1470+line1285+line1410+line1476+line1401+line1419+line1395+line1464+line1456+line1380+line1466+line1444+line1350+line1404+line1398+line1219+line1231+line1245+line1340+line1368+line1468+line1335+line1447": {
+      "source_id": "line._virtual.line1362+line1416+line1310+line1392+line1235+line1227+line1240+line1441+line1295+line1325+line1274+line1429+line1267+line1377+line1215+line1383+line1290+line1371+line1453+line1450+line1315+line1462+line1320+line1358+line1386+line1389+line1474+line1259+line1305+line1300+line1365+line1438+line1407+line1460+line1354+line1211+line1223+line1472+line1458+line1425+line1413+line1206+line1201+line1374+line1435+line1345+line1432+line1252+line1422+line1280+line1330+line1470+line1285+line1410+line1476+line1401+line1419+line1395+line1464+line1456+line1380+line1466+line1444+line1350+line1404+line1398+line1219+line1231+line1245+line1340+line1368+line1468+line1335+line1447",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1477",
+      "length": 16.123677,
+      "status": "ENABLED",
+      "t_bus": "1198",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1164+line1119+line1172+line1156+line1176+line1148+line1144+line1115+line1160+line1168+line1127+line1152+line1140+line1131+line1136+line1123": {
+      "source_id": "line._virtual.line1164+line1119+line1172+line1156+line1176+line1148+line1144+line1115+line1160+line1168+line1127+line1152+line1140+line1131+line1136+line1123",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1177",
+      "length": 7.164193,
+      "status": "ENABLED",
+      "t_bus": "1113",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line500+line468+line484": {
+      "source_id": "line._virtual.line500+line468+line484",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "501",
+      "length": 22.0943,
+      "status": "ENABLED",
+      "t_bus": "453",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line417+line509+line325+line526+line392+line307+line432+line380+line315+line404+line446+line369+line279+line461+line336+line300+line477+line284+line493+line358+line294+line289+line347": {
+      "source_id": "line._virtual.line417+line509+line325+line526+line392+line307+line432+line380+line315+line404+line446+line369+line279+line461+line336+line300+line477+line284+line493+line358+line294+line289+line347",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "275",
+      "length": 5.30006,
+      "status": "ENABLED",
+      "t_bus": "527",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line753+line811+line781+line853+line569+line552+line651+line679+line839+line693+line469+line535+line724+line602+line635+line796+line867+line767+line881+line825+line586+line708+line438+line665+line453+line618+line517+line501+line739+line422+line485": {
+      "source_id": "line._virtual.line753+line811+line781+line853+line569+line552+line651+line679+line839+line693+line469+line535+line724+line602+line635+line796+line867+line767+line881+line825+line586+line708+line438+line665+line453+line618+line517+line501+line739+line422+line485",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "882",
+      "length": 13.347464000000002,
+      "status": "ENABLED",
+      "t_bus": "410",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1012+line948+line1063+line1042+line992+line893+line906+line975+line999+line1036+line1024+line929+line1030+line918+line1055+line1048+line1078+line1006+line1071+line1018+line983+line967+line958+line939": {
+      "source_id": "line._virtual.line1012+line948+line1063+line1042+line992+line893+line906+line975+line999+line1036+line1024+line929+line1030+line918+line1055+line1048+line1078+line1006+line1071+line1018+line983+line967+line958+line939",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "881",
+      "length": 9.290094999999999,
+      "status": "ENABLED",
+      "t_bus": "1079",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line827+line968+line941+line813+line869+line920+line909+line931+line976+line841+line855+line798+line896+line883+line959+line950+line984+line783": {
+      "source_id": "line._virtual.line827+line968+line941+line813+line869+line920+line909+line931+line976+line841+line855+line798+line896+line883+line959+line950+line984+line783",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "770",
+      "length": 5.635574,
+      "status": "ENABLED",
+      "t_bus": "985",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1034+line1040+line1052+line1067+line1075+line997+line1082+line1010+line1022+line1016+line1004+line1059+line1046+line989+line1028": {
+      "source_id": "line._virtual.line1034+line1040+line1052+line1067+line1075+line997+line1082+line1010+line1022+line1016+line1004+line1059+line1046+line989+line1028",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "982",
+      "length": 6.001916999999999,
+      "status": "ENABLED",
+      "t_bus": "1083",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line314+line299+line306": {
+      "source_id": "line._virtual.line314+line299+line306",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "294",
+      "length": 11.4511,
+      "status": "ENABLED",
+      "t_bus": "315",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line253+line249+line241+line216+line245+line237+line168+line140+line164+line212+line127+line229+line152+line160+line233+line225+line188+line220+line136+line176+line172+line200+line196+line208+line192+line144+line132+line156+line184+line148+line204+line180": {
+      "source_id": "line._virtual.line253+line249+line241+line216+line245+line237+line168+line140+line164+line212+line127+line229+line152+line160+line233+line225+line188+line220+line136+line176+line172+line200+line196+line208+line192+line144+line132+line156+line184+line148+line204+line180",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "123",
+      "length": 26.528269000000005,
+      "status": "ENABLED",
+      "t_bus": "254",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line327": {
+      "length": 2.0176,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "317",
+      "source_id": "line.line327",
+      "status": "ENABLED",
+      "t_bus": "328",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1455": {
+      "length": 1.1808,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1453",
+      "source_id": "line.line1455",
+      "status": "ENABLED",
+      "t_bus": "1456",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line397+line364+line385+line374": {
+      "source_id": "line._virtual.line397+line364+line385+line374",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "353",
+      "length": 11.95248,
+      "status": "ENABLED",
+      "t_bus": "398",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line355+line491+line402+line333+line507+line378+line444+line542+line344+line415+line524+line430+line367+line390+line322+line475+line459": {
+      "source_id": "line._virtual.line355+line491+line402+line333+line507+line378+line444+line542+line344+line415+line524+line430+line367+line390+line322+line475+line459",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "543",
+      "length": 8.1178,
+      "status": "ENABLED",
+      "t_bus": "315",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line363+line396+line421+line384+line408+line373": {
+      "source_id": "line._virtual.line363+line396+line421+line384+line408+line373",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "422",
+      "length": 30.803199999999997,
+      "status": "ENABLED",
+      "t_bus": "353",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line425": {
+      "length": 4.102,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "411",
+      "source_id": "line.line425",
+      "status": "ENABLED",
+      "t_bus": "426",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line991+line865+line1023+line1041+line1029+line879+line928+line957+line823+line947+line966+line1047+line837+line974+line1005+line892+line998+line851+line905+line917+line1011+line1035+line1017+line982+line938": {
+      "source_id": "line._virtual.line991+line865+line1023+line1041+line1029+line879+line928+line957+line823+line947+line966+line1047+line837+line974+line1005+line892+line998+line851+line905+line917+line1011+line1035+line1017+line982+line938",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "811",
+      "length": 11.761448,
+      "status": "ENABLED",
+      "t_bus": "1048",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line860+line818+line803+line760+line846+line774+line789+line832+line874": {
+      "source_id": "line._virtual.line860+line818+line803+line760+line846+line774+line789+line832+line874",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "747",
+      "length": 11.039909999999999,
+      "status": "ENABLED",
+      "t_bus": "875",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line677+line649+line691+line633+line705+line663": {
+      "source_id": "line._virtual.line677+line649+line691+line633+line705+line663",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "706",
+      "length": 8.334779999999999,
+      "status": "ENABLED",
+      "t_bus": "618",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line349+line338+line360": {
+      "source_id": "line._virtual.line349+line338+line360",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "329",
+      "length": 9.2041,
+      "status": "ENABLED",
+      "t_bus": "361",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1132+line1137+line1173+line1161+line1145+line1141+line1165+line1169+line1157+line1149+line1153": {
+      "source_id": "line._virtual.line1132+line1137+line1173+line1161+line1145+line1141+line1165+line1169+line1157+line1149+line1153",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1174",
+      "length": 11.893524000000001,
+      "status": "ENABLED",
+      "t_bus": "1129",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line274+line270+line266": {
+      "source_id": "line._virtual.line274+line270+line266",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "264",
+      "length": 10.37125,
+      "status": "ENABLED",
+      "t_bus": "275",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line407+line435+line330+line579+line319+line351+line511+line643+line480+line449+line545+line420+line362+line383+line311+line496+line372+line658+line716+line672+line528+line686+line464+line395+line610+line626+line341+line562+line701+line595": {
+      "source_id": "line._virtual.line407+line435+line330+line579+line319+line351+line511+line643+line480+line449+line545+line420+line362+line383+line311+line496+line372+line658+line716+line672+line528+line686+line464+line395+line610+line626+line341+line562+line701+line595",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "717",
+      "length": 19.180130000000002,
+      "status": "ENABLED",
+      "t_bus": "304",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line437": {
+      "length": 0.76883,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "422",
+      "source_id": "line.line437",
+      "status": "ENABLED",
+      "t_bus": "438",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line784": {
+      "length": 2.1615,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "770",
+      "source_id": "line.line784",
+      "status": "ENABLED",
+      "t_bus": "785",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line539+line521+line556": {
+      "source_id": "line._virtual.line539+line521+line556",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "506",
+      "length": 16.226399999999998,
+      "status": "ENABLED",
+      "t_bus": "557",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line615+line647+line631": {
+      "source_id": "line._virtual.line615+line647+line631",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "648",
+      "length": 6.7466,
+      "status": "ENABLED",
+      "t_bus": "599",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line498+line466+line581+line482+line564+line451+line513+line597+line530+line547": {
+      "source_id": "line._virtual.line498+line466+line581+line482+line564+line451+line513+line597+line530+line547",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "598",
+      "length": 8.46843,
+      "status": "ENABLED",
+      "t_bus": "438",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line532+line582+line598+line566+line549+line515": {
+      "source_id": "line._virtual.line532+line582+line598+line566+line549+line515",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "599",
+      "length": 8.18236,
+      "status": "ENABLED",
+      "t_bus": "501",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line630": {
+      "length": 4.3919,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "615",
+      "source_id": "line.line630",
+      "status": "ENABLED",
+      "t_bus": "631",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1180+line1117+line1121+line1175+line1143+line1159+line1147+line1203+line1134+line1109+line1125+line1194+line1167+line1198+line1189+line1129+line1113+line1163+line1151+line1155+line1208+line1139+line1184+line1171": {
+      "source_id": "line._virtual.line1180+line1117+line1121+line1175+line1143+line1159+line1147+line1203+line1134+line1109+line1125+line1194+line1167+line1198+line1189+line1129+line1113+line1163+line1151+line1155+line1208+line1139+line1184+line1171",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1209",
+      "length": 10.409885999999997,
+      "status": "ENABLED",
+      "t_bus": "1107",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line568+line551+line534": {
+      "source_id": "line._virtual.line568+line551+line534",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "517",
+      "length": 12.363308,
+      "status": "ENABLED",
+      "t_bus": "569",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line516": {
+      "length": 1.8378,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "501",
+      "source_id": "line.line516",
+      "status": "ENABLED",
+      "t_bus": "517",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line744+line801+line758+line899+line591+line575+line844+line640+line872+line623+line729+line540+line787+line698+line830+line772+line714+line656+line557+line816+line886+line522+line670+line684+line858+line607+line912": {
+      "source_id": "line._virtual.line744+line801+line758+line899+line591+line575+line844+line640+line872+line623+line729+line540+line787+line698+line830+line772+line714+line656+line557+line816+line886+line522+line670+line684+line858+line607+line912",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "506",
+      "length": 26.595679999999994,
+      "status": "ENABLED",
+      "t_bus": "913",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1062": {
+      "length": 6.0251,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1055",
+      "source_id": "line.line1062",
+      "status": "ENABLED",
+      "t_bus": "1063",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line409": {
+      "length": 2.7156,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "398",
+      "source_id": "line.line409",
+      "status": "ENABLED",
+      "t_bus": "410",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line894+line907": {
+      "source_id": "line._virtual.line894+line907",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "881",
+      "length": 9.9206,
+      "status": "ENABLED",
+      "t_bus": "908",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1236+line1241": {
+      "source_id": "line._virtual.line1236+line1241",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1233",
+      "length": 0.266445,
+      "status": "ENABLED",
+      "t_bus": "1242",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line308+line301+line316": {
+      "source_id": "line._virtual.line308+line301+line316",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "317",
+      "length": 1.95213,
+      "status": "ENABLED",
+      "t_bus": "296",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1308+line1357+line1213+line1333+line1204+line1272+line1318+line1283+line1298+line1303+line1361+line1243+line1233+line1229+line1323+line1238+line1343+line1217+line1257+line1288+line1293+line1265+line1209+line1225+line1313+line1328+line1278+line1195+line1353+line1199+line1348+line1250+line1190+line1338+line1221": {
+      "source_id": "line._virtual.line1308+line1357+line1213+line1333+line1204+line1272+line1318+line1283+line1298+line1303+line1361+line1243+line1233+line1229+line1323+line1238+line1343+line1217+line1257+line1288+line1293+line1265+line1209+line1225+line1313+line1328+line1278+line1195+line1353+line1199+line1348+line1250+line1190+line1338+line1221",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1186",
+      "length": 13.128069000000002,
+      "status": "ENABLED",
+      "t_bus": "1362",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line574": {
+      "length": 1.4986,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "557",
+      "source_id": "line.line574",
+      "status": "ENABLED",
+      "t_bus": "575",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1187": {
+      "length": 3.4053,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1183",
+      "source_id": "line.line1187",
+      "status": "ENABLED",
+      "t_bus": "1188",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1039+line1027+line1088+line964+line1051+line1102+line1066+line980+line1015+line1099+line955+line1081+line1096+line1074+line1108+line1003+line1058+line1105+line1092+line996+line1045+line1009+line1112+line1033+line1021+line988+line972": {
+      "xs": [
+        [
+          0.00015803703448876466,
+          0.000106196206337124,
+          7.048486102104061e-5
+        ],
+        [
+          0.000106196206337124,
+          0.0001832836778906669,
+          0.00010621107160183354
+        ],
+        [
+          7.048486102104061e-5,
+          0.00010621107160183354,
+          0.00015806841756735673
+        ]
+      ],
+      "f_connections": [
+        1,
+        2,
+        3
+      ],
+      "length": 23.572373999999996,
+      "status": "ENABLED",
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "source_id": "line._virtual.line1039+line1027+line1088+line964+line1051+line1102+line1066+line980+line1015+line1099+line955+line1081+line1096+line1074+line1108+line1003+line1058+line1105+line1092+line996+line1045+line1009+line1112+line1033+line1021+line988+line972",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "946",
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "t_bus": "1113",
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.000539518382324411,
+          0.0001818029387883007,
+          0.00018457773047945663
+        ],
+        [
+          0.0001818029387883007,
+          0.0005338176281418876,
+          0.00018182270288364362
+        ],
+        [
+          0.00018457773047945663,
+          0.00018182270288364362,
+          0.0005395589688508127
+        ]
+      ]
+    },
+    "_virtual.line497+line702+line733+line465+line659+line563+line481+line687+line777+line748+line763+line436+line644+line546+line529+line450+line673+line580+line627+line512+line792+line717+line611+line596": {
+      "source_id": "line._virtual.line497+line702+line733+line465+line659+line563+line481+line687+line777+line748+line763+line436+line644+line546+line529+line450+line673+line580+line627+line512+line792+line717+line611+line596",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "793",
+      "length": 21.298290000000005,
+      "status": "ENABLED",
+      "t_bus": "422",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1191": {
+      "length": 2.3195,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1186",
+      "source_id": "line.line1191",
+      "status": "ENABLED",
+      "t_bus": "1192",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line727+line842+line828+line856+line799+line711+line742+line897+line921+line785+line932+line870+line770+line814+line756+line884+line910": {
+      "source_id": "line._virtual.line727+line842+line828+line856+line799+line711+line742+line897+line921+line785+line932+line870+line770+line814+line756+line884+line910",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "933",
+      "length": 4.295175,
+      "status": "ENABLED",
+      "t_bus": "697",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line339": {
+      "length": 2.1857,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "329",
+      "source_id": "line.line339",
+      "status": "ENABLED",
+      "t_bus": "340",
+      "linecode": "lc3",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1329+line1284+line1230+line1334+line1214+line1200+line1309+line1226+line1294+line1289+line1251+line1234+line1192+line1349+line1319+line1239+line1299+line1222+line1304+line1244+line1186+line1279+line1314+line1258+line1218+line1266+line1205+line1344+line1339+line1273+line1196+line1210+line1324": {
+      "source_id": "line._virtual.line1329+line1284+line1230+line1334+line1214+line1200+line1309+line1226+line1294+line1289+line1251+line1234+line1192+line1349+line1319+line1239+line1299+line1222+line1304+line1244+line1186+line1279+line1314+line1258+line1218+line1266+line1205+line1344+line1339+line1273+line1196+line1210+line1324",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1183",
+      "length": 13.786575,
+      "status": "ENABLED",
+      "t_bus": "1350",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line638+line589+line572+line682+line538+line399+line441+line427+line520+line387+line456+line488+line605+line504+line654+line696+line376+line412+line668+line555+line472+line621": {
+      "source_id": "line._virtual.line638+line589+line572+line682+line538+line399+line441+line427+line520+line387+line456+line488+line605+line504+line654+line696+line376+line412+line668+line555+line472+line621",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "366",
+      "length": 8.733475000000002,
+      "status": "ENABLED",
+      "t_bus": "697",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line710+line695+line620+line653+line637+line755+line604+line554+line440+line471+line537+line519+line769+line681+line386+line375+line455+line487+line667+line741+line571+line503+line411+line398+line588+line426+line726": {
+      "source_id": "line._virtual.line710+line695+line620+line653+line637+line755+line604+line554+line440+line471+line537+line519+line769+line681+line386+line375+line455+line487+line667+line741+line571+line503+line411+line398+line588+line426+line726",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "770",
+      "length": 7.5524949999999995,
+      "status": "ENABLED",
+      "t_bus": "366",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line613": {
+      "length": 3.6435,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "598",
+      "source_id": "line.line613",
+      "status": "ENABLED",
+      "t_bus": "614",
+      "linecode": "lc1",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line952+line961+line985+line923+line977+line1000+line993+line969+line934+line943": {
+      "source_id": "line._virtual.line952+line961+line985+line923+line977+line1000+line993+line969+line934+line943",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1001",
+      "length": 6.492589999999999,
+      "status": "ENABLED",
+      "t_bus": "913",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line175+line147+line106+line109+line115+line159+line179+line191+line121+line199+line112+line219+line151+line187+line183+line130+line215+line211+line167+line155+line143+line125+line195+line135+line203+line207+line139+line163+line118+line171+line224": {
+      "source_id": "line._virtual.line175+line147+line106+line109+line115+line159+line179+line191+line121+line199+line112+line219+line151+line187+line183+line130+line215+line211+line167+line155+line143+line125+line195+line135+line203+line207+line139+line163+line118+line171+line224",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "104",
+      "length": 19.266219999999997,
+      "status": "ENABLED",
+      "t_bus": "225",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line1237+line1256+line1249+line1242": {
+      "source_id": "line._virtual.line1237+line1256+line1249+line1242",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1233",
+      "length": 0.691372,
+      "status": "ENABLED",
+      "t_bus": "1257",
+      "linecode": "lc9",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line891+line850+line821+line835+line904+line806+line864+line878": {
+      "source_id": "line._virtual.line891+line850+line821+line835+line904+line806+line864+line878",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "793",
+      "length": 12.497779999999999,
+      "status": "ENABLED",
+      "t_bus": "905",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line721": {
+      "length": 4.2768,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "706",
+      "source_id": "line.line721",
+      "status": "ENABLED",
+      "t_bus": "722",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line819+line833+line790+line804+line775+line761": {
+      "source_id": "line._virtual.line819+line833+line790+line804+line775+line761",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "834",
+      "length": 3.55018,
+      "status": "ENABLED",
+      "t_bus": "747",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "line1427": {
+      "length": 1.0474,
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "1424",
+      "source_id": "line.line1427",
+      "status": "ENABLED",
+      "t_bus": "1428",
+      "linecode": "lc6",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    },
+    "_virtual.line131+line126": {
+      "source_id": "line._virtual.line131+line126",
+      "t_connections": [
+        1,
+        2,
+        3
+      ],
+      "f_bus": "123",
+      "length": 1.83709,
+      "status": "ENABLED",
+      "t_bus": "132",
+      "linecode": "lc4",
+      "f_connections": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "conductor_ids": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "settings": {
+    "sbase_default": 1000,
+    "vbases_default": {
+      "sourcebus": 0.24017771198288432
+    },
+    "voltage_scale_factor": 1000.0,
+    "power_scale_factor": 1000.0,
+    "base_frequency": 50.0
+  },
+  "files": [
+    "data/three-wire-modified/network_18/Feeder_3/Master.dss",
+    "data/three-wire-modified/network_18/Feeder_3/LineCode.txt",
+    "data/three-wire-modified/network_18/Feeder_3/Lines.txt",
+    "data/three-wire-modified/network_18/Feeder_3/Loads.txt"
+  ],
+  "load": {
+    "load34": {
+      "source_id": "load.load34",
+      "qd_nom": [
+        0.9032239210315162
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        2.748
+      ],
+      "dispatchable": "NO",
+      "bus": "1001",
+      "configuration": "WYE"
+    },
+    "load33": {
+      "source_id": "load.load33",
+      "qd_nom": [
+        0.09466102229151262
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28800000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "991",
+      "configuration": "WYE"
+    },
+    "load2": {
+      "source_id": "load.load2",
+      "qd_nom": [
+        0.10057733618473214
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.306
+      ],
+      "dispatchable": "NO",
+      "bus": "254",
+      "configuration": "WYE"
+    },
+    "load47": {
+      "source_id": "load.load47",
+      "qd_nom": [
+        0.11635417323331756
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.354
+      ],
+      "dispatchable": "NO",
+      "bus": "1362",
+      "configuration": "WYE"
+    },
+    "load8": {
+      "source_id": "load.load8",
+      "qd_nom": [
+        0.0966331269225858
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.29400000000000004
+      ],
+      "dispatchable": "NO",
+      "bus": "426",
+      "configuration": "WYE"
+    },
+    "load28": {
+      "source_id": "load.load28",
+      "qd_nom": [
+        0.09071681302936625
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.276
+      ],
+      "dispatchable": "NO",
+      "bus": "914",
+      "configuration": "WYE"
+    },
+    "load46": {
+      "source_id": "load.load46",
+      "qd_nom": [
+        0.11043785934009805
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.336
+      ],
+      "dispatchable": "NO",
+      "bus": "1350",
+      "configuration": "WYE"
+    },
+    "load20": {
+      "source_id": "load.load20",
+      "qd_nom": [
+        0.08677260376721989
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.264
+      ],
+      "dispatchable": "NO",
+      "bus": "722",
+      "configuration": "WYE"
+    },
+    "load1": {
+      "source_id": "load.load1",
+      "qd_nom": [
+        0.6468503189920027
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        1.968
+      ],
+      "dispatchable": "NO",
+      "bus": "225",
+      "configuration": "WYE"
+    },
+    "load42": {
+      "source_id": "load.load42",
+      "qd_nom": [
+        0.04930261577682949
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.15000000000000002
+      ],
+      "dispatchable": "NO",
+      "bus": "1111",
+      "configuration": "WYE"
+    },
+    "load6": {
+      "source_id": "load.load6",
+      "qd_nom": [
+        1.0038012572162482
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        3.0540000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "361",
+      "configuration": "WYE"
+    },
+    "load30": {
+      "source_id": "load.load30",
+      "qd_nom": [
+        0.08677260376721989
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.264
+      ],
+      "dispatchable": "NO",
+      "bus": "933",
+      "configuration": "WYE"
+    },
+    "load35": {
+      "source_id": "load.load35",
+      "qd_nom": [
+        0.3159311618979233
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.9612
+      ],
+      "dispatchable": "NO",
+      "bus": "1063",
+      "configuration": "WYE"
+    },
+    "load11": {
+      "source_id": "load.load11",
+      "qd_nom": [
+        0.10846575470902486
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.33
+      ],
+      "dispatchable": "NO",
+      "bus": "601",
+      "configuration": "WYE"
+    },
+    "load3": {
+      "source_id": "load.load3",
+      "qd_nom": [
+        0.9663312692258578
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        2.94
+      ],
+      "dispatchable": "NO",
+      "bus": "261",
+      "configuration": "WYE"
+    },
+    "load31": {
+      "source_id": "load.load31",
+      "qd_nom": [
+        0.09268891766043943
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28200000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "950",
+      "configuration": "WYE"
+    },
+    "load44": {
+      "source_id": "load.load44",
+      "qd_nom": [
+        0.6152966448948319
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        1.8719999999999999
+      ],
+      "dispatchable": "NO",
+      "bus": "1192",
+      "configuration": "WYE"
+    },
+    "load13": {
+      "source_id": "load.load13",
+      "qd_nom": [
+        0.08085628987400034
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.246
+      ],
+      "dispatchable": "NO",
+      "bus": "631",
+      "configuration": "WYE"
+    },
+    "load12": {
+      "source_id": "load.load12",
+      "qd_nom": [
+        0.10846575470902486
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.33
+      ],
+      "dispatchable": "NO",
+      "bus": "614",
+      "configuration": "WYE"
+    },
+    "load29": {
+      "source_id": "load.load29",
+      "qd_nom": [
+        0.11438206860224441
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.34800000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "925",
+      "configuration": "WYE"
+    },
+    "load43": {
+      "source_id": "load.load43",
+      "qd_nom": [
+        0.1045215454468785
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.318
+      ],
+      "dispatchable": "NO",
+      "bus": "1188",
+      "configuration": "WYE"
+    },
+    "load7": {
+      "source_id": "load.load7",
+      "qd_nom": [
+        0.6764318884581005
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        2.0580000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "424",
+      "configuration": "WYE"
+    },
+    "load15": {
+      "source_id": "load.load15",
+      "qd_nom": [
+        0.2721504390880988
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.8280000000000001
+      ],
+      "dispatchable": "NO",
+      "bus": "648",
+      "configuration": "WYE"
+    },
+    "load27": {
+      "source_id": "load.load27",
+      "qd_nom": [
+        0.08874470839829307
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.27
+      ],
+      "dispatchable": "NO",
+      "bus": "905",
+      "configuration": "WYE"
+    },
+    "load19": {
+      "source_id": "load.load19",
+      "qd_nom": [
+        0.6389619004677101
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        1.944
+      ],
+      "dispatchable": "NO",
+      "bus": "719",
+      "configuration": "WYE"
+    },
+    "load51": {
+      "source_id": "load.load51",
+      "qd_nom": [
+        0.10846575470902486
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.33
+      ],
+      "dispatchable": "NO",
+      "bus": "1490",
+      "configuration": "WYE"
+    },
+    "load25": {
+      "source_id": "load.load25",
+      "qd_nom": [
+        0.0966331269225858
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.29400000000000004
+      ],
+      "dispatchable": "NO",
+      "bus": "810",
+      "configuration": "WYE"
+    },
+    "load32": {
+      "source_id": "load.load32",
+      "qd_nom": [
+        0.11240996397117123
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.342
+      ],
+      "dispatchable": "NO",
+      "bus": "985",
+      "configuration": "WYE"
+    },
+    "load24": {
+      "source_id": "load.load24",
+      "qd_nom": [
+        0.6429061097298564
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        1.956
+      ],
+      "dispatchable": "NO",
+      "bus": "808",
+      "configuration": "WYE"
+    },
+    "load48": {
+      "source_id": "load.load48",
+      "qd_nom": [
+        0.07099576671863445
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.21599999999999997
+      ],
+      "dispatchable": "NO",
+      "bus": "1428",
+      "configuration": "WYE"
+    },
+    "load21": {
+      "source_id": "load.load21",
+      "qd_nom": [
+        0.11043785934009805
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.336
+      ],
+      "dispatchable": "NO",
+      "bus": "738",
+      "configuration": "WYE"
+    },
+    "load10": {
+      "source_id": "load.load10",
+      "qd_nom": [
+        0.08874470839829307
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.27
+      ],
+      "dispatchable": "NO",
+      "bus": "595",
+      "configuration": "WYE"
+    },
+    "load49": {
+      "source_id": "load.load49",
+      "qd_nom": [
+        0.10649365007795168
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.324
+      ],
+      "dispatchable": "NO",
+      "bus": "1452",
+      "configuration": "WYE"
+    },
+    "load36": {
+      "source_id": "load.load36",
+      "qd_nom": [
+        0.1045215454468785
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.318
+      ],
+      "dispatchable": "NO",
+      "bus": "1070",
+      "configuration": "WYE"
+    },
+    "load5": {
+      "source_id": "load.load5",
+      "qd_nom": [
+        0.4378072280982458
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        1.332
+      ],
+      "dispatchable": "NO",
+      "bus": "340",
+      "configuration": "WYE"
+    },
+    "load14": {
+      "source_id": "load.load14",
+      "qd_nom": [
+        0.670515574564881
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        2.04
+      ],
+      "dispatchable": "NO",
+      "bus": "642",
+      "configuration": "WYE"
+    },
+    "load40": {
+      "source_id": "load.load40",
+      "qd_nom": [
+        0.09466102229151262
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28800000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "1086",
+      "configuration": "WYE"
+    },
+    "load17": {
+      "source_id": "load.load17",
+      "qd_nom": [
+        0.09466102229151262
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28800000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "701",
+      "configuration": "WYE"
+    },
+    "load41": {
+      "source_id": "load.load41",
+      "qd_nom": [
+        0.09466102229151262
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28800000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "1094",
+      "configuration": "WYE"
+    },
+    "load38": {
+      "source_id": "load.load38",
+      "qd_nom": [
+        0.09071681302936625
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.276
+      ],
+      "dispatchable": "NO",
+      "bus": "1083",
+      "configuration": "WYE"
+    },
+    "load50": {
+      "source_id": "load.load50",
+      "qd_nom": [
+        0.1045215454468785
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.318
+      ],
+      "dispatchable": "NO",
+      "bus": "1456",
+      "configuration": "WYE"
+    },
+    "load45": {
+      "source_id": "load.load45",
+      "qd_nom": [
+        1.83602941152913
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        5.586
+      ],
+      "dispatchable": "NO",
+      "bus": "1209",
+      "configuration": "WYE"
+    },
+    "load26": {
+      "source_id": "load.load26",
+      "qd_nom": [
+        0.11043785934009805
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.336
+      ],
+      "dispatchable": "NO",
+      "bus": "882",
+      "configuration": "WYE"
+    },
+    "load22": {
+      "source_id": "load.load22",
+      "qd_nom": [
+        0.31750884560278186
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.966
+      ],
+      "dispatchable": "NO",
+      "bus": "751",
+      "configuration": "WYE"
+    },
+    "load39": {
+      "source_id": "load.load39",
+      "qd_nom": [
+        3.2007258162317695
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        9.738
+      ],
+      "dispatchable": "NO",
+      "bus": "1084",
+      "configuration": "WYE"
+    },
+    "load37": {
+      "source_id": "load.load37",
+      "qd_nom": [
+        0.09268891766043943
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.28200000000000003
+      ],
+      "dispatchable": "NO",
+      "bus": "1078",
+      "configuration": "WYE"
+    },
+    "load18": {
+      "source_id": "load.load18",
+      "qd_nom": [
+        0.10649365007795168
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        1,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.324
+      ],
+      "dispatchable": "NO",
+      "bus": "713",
+      "configuration": "WYE"
+    },
+    "load4": {
+      "source_id": "load.load4",
+      "qd_nom": [
+        0.10649365007795168
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        2,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.324
+      ],
+      "dispatchable": "NO",
+      "bus": "328",
+      "configuration": "WYE"
+    },
+    "load23": {
+      "source_id": "load.load23",
+      "qd_nom": [
+        0.08085628987400034
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.246
+      ],
+      "dispatchable": "NO",
+      "bus": "785",
+      "configuration": "WYE"
+    },
+    "load9": {
+      "source_id": "load.load9",
+      "qd_nom": [
+        0.10254944081580532
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.312
+      ],
+      "dispatchable": "NO",
+      "bus": "560",
+      "configuration": "WYE"
+    },
+    "load16": {
+      "source_id": "load.load16",
+      "qd_nom": [
+        0.037469987990390405
+      ],
+      "status": "ENABLED",
+      "model": "POWER",
+      "connections": [
+        3,
+        4
+      ],
+      "vm_nom": 0.23,
+      "pd_nom": [
+        0.11399999999999999
+      ],
+      "dispatchable": "NO",
+      "bus": "690",
+      "configuration": "WYE"
+    }
+  },
+  "bus": {
+    "599": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "598": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1078": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "925": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "751": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1070": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1083": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "542": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "219": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "793": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "717": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "438": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "723": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "264": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "424": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1350": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "315": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "366": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "614": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "811": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1188": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1113": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "950": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1265": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1198": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1490": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "378": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1424": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "706": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1477": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1186": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "914": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "615": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1183": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "506": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "875": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "353": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "453": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1084": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1272": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "357": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "426": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "991": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "905": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "527": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "722": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "296": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "719": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "275": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1233": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "340": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "747": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "631": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "713": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1174": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "908": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1428": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "686": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "517": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1177": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "961": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1453": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "104": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "410": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1136": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "304": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1276": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1094": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "810": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "543": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1048": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "881": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "254": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "693": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "834": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1362": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "882": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1242": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "422": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "648": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "120": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "496": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1079": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "575": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "785": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1001": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "982": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "566": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "770": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "701": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "86": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "261": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "697": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "sourcebus": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "595": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "259": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1129": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "398": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "294": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "557": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "328": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1086": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "501": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "837": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "123": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "601": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "317": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "913": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "569": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "642": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1257": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "738": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "225": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1192": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1111": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1055": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "344": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1456": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1063": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "933": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1209": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1061": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "985": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "361": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "808": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "1452": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "690": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "329": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "560": {
+      "rg": [
+        0.0
+      ],
+      "grounded": [
+        4
+      ],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "xg": [
+        0.0
+      ]
+    },
+    "411": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "132": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "618": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "946": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    },
+    "1107": {
+      "rg": [],
+      "grounded": [],
+      "status": "ENABLED",
+      "terminals": [
+        1,
+        2,
+        3
+      ],
+      "xg": []
+    }
+  },
+  "linecode": {
+    "lc9": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.00046986676385495476,
+          0.0001454235094893396,
+          0.00014705976385495482
+        ],
+        [
+          0.0001454235094893396,
+          0.00046734002017318935,
+          0.0001454235094893396
+        ],
+        [
+          0.00014705976385495482,
+          0.0001454235094893396,
+          0.00046986676385495476
+        ]
+      ],
+      "cm_ub": [
+        197.0,
+        197.0,
+        197.0
+      ],
+      "xs": [
+        [
+          0.0001144434279169435,
+          6.325078830784545e-5,
+          3.0935427916943465e-5
+        ],
+        [
+          6.325078830784545e-5,
+          0.00013484657137128892,
+          6.325078830784545e-5
+        ],
+        [
+          3.0935427916943465e-5,
+          6.325078830784545e-5,
+          0.0001144434279169435
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "lc3": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.0008116586312898465,
+          0.0002804654788914415,
+          0.00028658871667688526
+        ],
+        [
+          0.0002804654788914415,
+          0.000798761925106297,
+          0.0002805241839239158
+        ],
+        [
+          0.00028658871667688526,
+          0.0002805241839239158,
+          0.0008117788036717444
+        ]
+      ],
+      "cm_ub": [
+        129.0,
+        129.0,
+        129.0
+      ],
+      "xs": [
+        [
+          0.00026243321467982623,
+          0.00020719203457973917,
+          0.00016864022049264266
+        ],
+        [
+          0.00020719203457973917,
+          0.00029080169972868107,
+          0.0002072410312795302
+        ],
+        [
+          0.00016864022049264266,
+          0.0002072410312795302,
+          0.00026252820689216805
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "lc1": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.0015112190183206278,
+          0.00035164631918609466,
+          0.00035924119542631033
+        ],
+        [
+          0.00035164631918609466,
+          0.0014959834903633085,
+          0.00035163476772465916
+        ],
+        [
+          0.00035924119542631033,
+          0.00035163476772465916,
+          0.0015111953727391253
+        ]
+      ],
+      "cm_ub": [
+        75.0,
+        75.0,
+        75.0
+      ],
+      "xs": [
+        [
+          0.00048261336669352375,
+          0.0004106734223692922,
+          0.0003786293578031279
+        ],
+        [
+          0.0004106734223692922,
+          0.0004985555265646619,
+          0.00041065614621125666
+        ],
+        [
+          0.0003786293578031279,
+          0.00041065614621125666,
+          0.00048258034857901405
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "lc6": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.0017933236711472256,
+          0.0006363723759193842,
+          0.0006399235094508074
+        ],
+        [
+          0.0006363723759193842,
+          0.001784886510251047,
+          0.0006363722249590626
+        ],
+        [
+          0.0006399235094508074,
+          0.0006363722249590626,
+          0.0017933243477547519
+        ]
+      ],
+      "cm_ub": [
+        58.0,
+        58.0,
+        58.0
+      ],
+      "xs": [
+        [
+          0.0003187962545975606,
+          0.00025148121390513803,
+          0.00020435482237859037
+        ],
+        [
+          0.00025148121390513803,
+          0.00035293536029633234,
+          0.00025148177638394375
+        ],
+        [
+          0.00020435482237859037,
+          0.00025148177638394375,
+          0.0003188003901594534
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "lc4": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.00044953913376315723,
+          0.0001761619913609819,
+          0.00017851228168033932
+        ],
+        [
+          0.00017616199136098195,
+          0.0004429873630446448,
+          0.0001761926354329793
+        ],
+        [
+          0.00017851228168033932,
+          0.0001761926354329793,
+          0.00044960242548376385
+        ]
+      ],
+      "cm_ub": [
+        167.0,
+        167.0,
+        167.0
+      ],
+      "xs": [
+        [
+          0.00016443387363897948,
+          0.00011425582422645953,
+          7.301236488580165e-5
+        ],
+        [
+          0.00011425582422645958,
+          0.00019845465242237788,
+          0.00011427426646422706
+        ],
+        [
+          7.301236488580165e-5,
+          0.00011427426646422706,
+          0.00016448084404397677
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "lc5": {
+      "b_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "rs": [
+        [
+          0.00028624372507521405,
+          0.00012998859917512696,
+          0.00012119153205667877
+        ],
+        [
+          0.00012998859917512696,
+          0.0002941406352699749,
+          0.0001299884911853283
+        ],
+        [
+          0.00012119153205667877,
+          0.0001299884911853283,
+          0.00028624433902157953
+        ]
+      ],
+      "cm_ub": [
+        223.0,
+        223.0,
+        223.0
+      ],
+      "xs": [
+        [
+          0.00012239538863209254,
+          7.930352037524346e-5,
+          2.6869314711363557e-5
+        ],
+        [
+          7.930352037524346e-5,
+          0.00016829225790114148,
+          7.930355564647985e-5
+        ],
+        [
+          2.6869314711363557e-5,
+          7.930355564647985e-5,
+          0.0001223942407993661
+        ]
+      ],
+      "b_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_to": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "g_fr": [
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  },
+  "data_model": "ENGINEERING"
+}
